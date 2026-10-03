@@ -236,7 +236,6 @@ footer .legal{grid-column:1/-1;padding-top:80px;color:var(--slate-5)}
 .authors sup{font-size:.55em;line-height:0;vertical-align:super;color:var(--ink-2);margin-left:2px;letter-spacing:0}
 .affiliations{display:flex;flex-wrap:wrap;justify-content:center;column-gap:22px;row-gap:4px;font:500 17px/24px var(--font);letter-spacing:-.3px;color:var(--ink)}
 .affiliations sup{font-size:.6em;line-height:0;vertical-align:super;color:var(--accent-ink);margin-right:2px}
-.affiliations-note{margin-top:-8px;font-size:13px;line-height:18px}
 .project-actions{margin-top:8px}
 .project-actions{display:flex;gap:12px;flex-shrink:0}
 .media-section{border-top:1px solid var(--line-soft)}
