@@ -39,6 +39,12 @@ placeholder: commit the PDF as `assets/paper.pdf` and the button switches on wit
 change. When an appendix is ready, add it as `assets/appendix.pdf` and add its link next to
 **Read paper**.
 
+### Live demo
+
+**Live demo** in the nav and the hero buttons opens the browser demo at
+<https://multiplylabs.github.io/robogym-online/>: the wrench student running client-side in
+MuJoCo-WASM with force exertion and compensation, steerable with WASD.
+
 ### Code
 
 When the code repo is ready, add its link next to **Read paper** in `index.html`.
