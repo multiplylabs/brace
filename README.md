@@ -1,6 +1,6 @@
 # BRACE project page
 
-Project page for **BRACE: Adapting Whole-Body References for Force and Terrain Aware Humanoid Motion Tracking**, an ICRA 2027 submission from Multiply Labs, Brown University and the University of New Mexico.
+Project page for **BRACE: Adapting Whole-Body References for Force and Terrain Aware Humanoid Motion Tracking**, from Multiply Labs, Brown University and the University of New Mexico.
 
 Live at <https://multiplylabs.github.io/brace/>. Every push to `main` deploys through GitHub Actions.
 
@@ -49,7 +49,7 @@ The page contains 20 distinct demonstrations, a reference-transformation animati
 appears once in the galleries; only the teaser reuses clips.
 The teaser always starts with syringe insertion, followed by kettlebell squats and a ramp walk,
 then outdoor bicep curls. It repeats that sequence. The title and gray overlay stay in place.
-The outdoor demo uses the first 30 seconds of the ICRA video; the teaser uses a separate
+The outdoor demo uses the first 30 seconds of the submission video; the teaser uses a separate
 4–20-second cut of that sequence. Both crop out the title along the top edge and retain
 the source blur treatment without additions.
 Demonstrations and figures lead the page. Baseline comparisons precede applications;
@@ -89,9 +89,9 @@ distance between the operator and robot.
 
 The edit decisions live in `scripts/clips.json`: source intervals, crop rectangles, masks,
 and optional per-clip `crf` and `preset` settings to keep longer exports compact.
-ICRA clips retain the source video's existing blur with **no additional blur**.
+Submission-video clips retain the source video's existing blur with **no additional blur**.
 CoRL clips use small, feathered Gaussian masks for exposed faces and selected labels, matching
-the ICRA treatment. VR headset operators receive no added face blur. Coordinates use a
+the submission-video treatment. VR headset operators receive no added face blur. Coordinates use a
 960 × 540 reference frame; timed keyframes follow moving subjects. Exports preserve up to
 1080p source resolution without upscaling. The hero uses these prepared clips; no original
 footage is copied to the published tree. The outdoor curl clip uses the requested 16–25-second
@@ -106,7 +106,7 @@ the three source files explicitly:
 ffmpeg -init_hw_device vulkan=vk -filter_hw_device vk -i path/to/outdoor-source.mov \
   -map 0:v:0 -vf 'libplacebo=colorspace=bt709:color_primaries=bt709:color_trc=bt709:format=yuv420p,format=yuv420p,fps=30' \
   -an -map_metadata -1 -map_chapters -1 -c:v libx264 -crf 17 path/to/outdoor-sdr.mp4
-python scripts/render-clips.py --icra path/to/icra-video.mp4 --traction path/to/traction-video.mp4 --outdoor path/to/outdoor-sdr.mp4
+python scripts/render-clips.py --submission path/to/submission-video.mp4 --traction path/to/traction-video.mp4 --outdoor path/to/outdoor-sdr.mp4
 ```
 
 Use `--only clip_name` to render a single clip; only that clip's source argument is required.

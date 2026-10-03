@@ -24,8 +24,8 @@ def mask_box(mask, timestamp):
 
 
 def render(clip, sources, output, coordinate_size, settings):
-    if clip['source'] == 'icra' and clip['masks'] and not settings.get('icra_additional_blur', False):
-        raise ValueError('ICRA clips must preserve the source blur without additional masks')
+    if clip['source'] == 'submission' and clip['masks'] and not settings.get('submission_additional_blur', False):
+        raise ValueError('Submission-video clips must preserve the source blur without additional masks')
     capture = cv2.VideoCapture(str(sources[clip['source']]))
     if not capture.isOpened():
         raise RuntimeError(f"Cannot open source for {clip['id']}")
@@ -98,7 +98,7 @@ def render(clip, sources, output, coordinate_size, settings):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--icra', type=Path)
+    parser.add_argument('--submission', type=Path)
     parser.add_argument('--traction', type=Path)
     parser.add_argument('--outdoor', type=Path, help='Outdoor footage converted to SDR at a constant frame rate')
     parser.add_argument('--only', nargs='*')

@@ -3,7 +3,7 @@
   "clips": [
     {
       "id": "outdoor_squat_ramp",
-      "source": "icra",
+      "source": "submission",
       "start": 0,
       "end": 30,
       "crop": [40, 45, 880, 495],
@@ -628,7 +628,7 @@
     },
     {
       "id": "cart_push_slope",
-      "source": "icra",
+      "source": "submission",
       "start": 113.99,
       "end": 119.53,
       "crop": [30, 0, 900, 458],
@@ -930,7 +930,7 @@
     },
     {
       "id": "torque_control",
-      "source": "icra",
+      "source": "submission",
       "start": 82.92,
       "end": 90.58,
       "crop": [20, 25, 920, 433],
@@ -943,7 +943,7 @@
     },
     {
       "id": "kettlebell_carry",
-      "source": "icra",
+      "source": "submission",
       "start": 90.68,
       "end": 100.7,
       "crop": [0, 0, 480, 270],
@@ -956,7 +956,7 @@
     },
     {
       "id": "kettlebell_squat",
-      "source": "icra",
+      "source": "submission",
       "start": 90.68,
       "end": 100.7,
       "crop": [480, 0, 480, 270],
@@ -969,7 +969,7 @@
     },
     {
       "id": "resisted_squat",
-      "source": "icra",
+      "source": "submission",
       "start": 100.81,
       "end": 108.65,
       "crop": [0, 80, 480, 378],
@@ -982,7 +982,7 @@
     },
     {
       "id": "force_gauge",
-      "source": "icra",
+      "source": "submission",
       "start": 108.74,
       "end": 113.9,
       "crop": [0, 90, 945, 368],
@@ -1343,7 +1343,7 @@
     },
     {
       "id": "comparison_box",
-      "source": "icra",
+      "source": "submission",
       "start": 41.88,
       "end": 49.42,
       "crop": [0, 65, 960, 393],
@@ -1356,7 +1356,7 @@
     },
     {
       "id": "comparison_slope",
-      "source": "icra",
+      "source": "submission",
       "start": 49.51,
       "end": 58.93,
       "crop": [0, 60, 960, 398],
@@ -1369,7 +1369,7 @@
     },
     {
       "id": "comparison_rows",
-      "source": "icra",
+      "source": "submission",
       "start": 59.02,
       "end": 71.4,
       "crop": [0, 65, 960, 393],
@@ -1382,7 +1382,7 @@
     },
     {
       "id": "comparison_lateral",
-      "source": "icra",
+      "source": "submission",
       "start": 73.0,
       "end": 82.83,
       "crop": [0, 65, 960, 393],
@@ -1395,7 +1395,7 @@
     },
     {
       "id": "vla_execution",
-      "source": "icra",
+      "source": "submission",
       "start": 131.95,
       "end": 136.65,
       "crop": [80, 0, 710, 442],
@@ -1408,7 +1408,7 @@
     },
     {
       "id": "teleop_gamepad",
-      "source": "icra",
+      "source": "submission",
       "start": 124.92,
       "end": 131.0,
       "crop": [45, 0, 915, 442],
@@ -1421,7 +1421,7 @@
     },
     {
       "id": "teleop_remote",
-      "source": "icra",
+      "source": "submission",
       "start": 137.85,
       "end": 142.82,
       "crop": [0, 0, 960, 442],
@@ -1447,7 +1447,7 @@
     },
     {
       "id": "outdoor_squat_teaser",
-      "source": "icra",
+      "source": "submission",
       "start": 4,
       "end": 20,
       "crop": [40, 45, 880, 495],
@@ -1463,7 +1463,7 @@
     "max_width": 1920,
     "max_height": 1080,
     "crf": 19,
-    "icra_additional_blur": false,
+    "submission_additional_blur": false,
     "blur_style": "feathered Gaussian",
     "vr_faces_blurred": false
   }

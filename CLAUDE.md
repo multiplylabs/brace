@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Project page for **BRACE** (ICRA 2027 submission), the named, de-anonymized version hosted under the Multiply Labs GitHub organization at https://multiplylabs.github.io/brace/. README.md covers layout, content slots and deployment; this file holds the rules for working here.
+Project page for **BRACE**, the named, de-anonymized version hosted under the Multiply Labs GitHub organization at https://multiplylabs.github.io/brace/. README.md covers layout, content slots and deployment; this file holds the rules for working here.
 
 ## Relationship to the anonymous site
 
