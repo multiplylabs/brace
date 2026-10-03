@@ -110,9 +110,13 @@
     updateStage();
   };
 
-  for (const slot of document.querySelectorAll("[data-video]")) {
+  // A player is created when its slot comes within a screen of the viewport, not at page load:
+  // twenty-odd clips probed and opened at once is what made the page slow to settle. The probe
+  // for the clip and its poster run together, and the clip itself is not fetched until it is in
+  // view (`preload="none"` with the poster shown), so the page's own weight is the posters.
+  const mount = (slot) => {
     const base = `assets/video/${slot.dataset.video}`;
-    exists(`${base}.mp4`).then(async (available) => {
+    Promise.all([exists(`${base}.mp4`), exists(`${base}.jpg`)]).then(([available, poster]) => {
       if (!available) {
         slot.querySelector(".label .caps").textContent = "Video unavailable";
         return;
@@ -122,8 +126,8 @@
       video.src = `${base}.mp4`;
       video.controls = true;
       video.playsInline = true;
-      video.preload = "metadata";
-      if (await exists(`${base}.jpg`)) video.poster = `${base}.jpg`;
+      video.preload = poster ? "none" : "metadata";
+      if (poster) video.poster = `${base}.jpg`;
       video.setAttribute("aria-label", slot.querySelector(".title-sm")?.textContent ?? "Robot demonstration");
       if (slot.hasAttribute("data-autoplay")) {
         video.muted = true;
@@ -133,5 +137,13 @@
       }
       slot.querySelector(".frame").replaceWith(video);
     });
-  }
+  };
+  const nearViewport = new IntersectionObserver((entries) => {
+    for (const { target, isIntersecting } of entries) {
+      if (!isIntersecting) continue;
+      nearViewport.unobserve(target);
+      mount(target);
+    }
+  }, { rootMargin: "100% 0px" });
+  for (const slot of document.querySelectorAll("[data-video]")) nearViewport.observe(slot);
 })();

@@ -23,9 +23,9 @@ Driven by `assets/js/site.js`:
 
 - `a[data-soon][data-probe]`: disabled ("Soon") until its href exists. The **Read paper** button is one: it switches on by itself once `assets/paper.pdf` is committed.
 - `a[data-soon]`: disabled until the attribute is removed by hand (the code link).
-- `[data-video="name"]`: becomes a `<video>` once `assets/video/name.mp4` exists; `name.jpg` is its poster. `data-autoplay` makes it a muted loop that plays while on screen.
+- `[data-video="name"]`: becomes a `<video>` once `assets/video/name.mp4` exists; `name.jpg` is its poster. Players are created as their slot comes within a screen of the viewport, with the clip fetched only when it is in view. `data-autoplay` makes it a muted loop that plays while on screen.
 
 ## Verifying changes
 
-1. `python3 -m http.server 8000` in the repo root, then check the page in a browser at desktop width and at 390px. Placeholders need http, not `file://`.
+1. `python3 scripts/serve.py 8000` in the repo root, then check the page in a browser at desktop width and at 390px. Placeholders need http, not `file://`, and the videos need byte ranges, which `python3 -m http.server` does not serve.
 2. After pushing, `gh run watch` the "Deploy site" workflow and load the live URL.

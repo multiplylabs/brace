@@ -11,7 +11,8 @@ This is the **named** project page. An anonymous copy exists separately for doub
 ```
 index.html                    the page
 assets/css/site.css           styles and design tokens
-assets/js/site.js             turns placeholders on once their files exist
+assets/js/site.js             turns placeholders on once their files exist; mounts players as they near the viewport
+scripts/serve.py              local preview server with byte-range support
 assets/paper.pdf              the paper (not yet added; the button shows "Soon" until it is)
 assets/img/                   figures exported from the paper
 assets/video/                 videos (<slot>.mp4) and optional posters (<slot>.jpg)
@@ -23,10 +24,12 @@ The site is plain HTML and CSS with no build step. The workflow copies `index.ht
 ## Preview locally
 
 ```sh
-python3 -m http.server 8000   # then open http://localhost:8000
+python3 scripts/serve.py 8000   # then open http://localhost:8000
 ```
 
 Use a server, not `file://`. The placeholder logic checks whether files exist with `fetch`, which does not work on `file://` pages.
+
+Use `scripts/serve.py` rather than `python3 -m http.server`. The built-in server has no byte-range support and speaks HTTP/1.0, so a browser asking for a clip's header ends up downloading the whole clip, for every player, on a fresh connection each time. GitHub Pages serves ranges, so the live site never had this problem; only local previews did.
 
 ## Adding content
 
