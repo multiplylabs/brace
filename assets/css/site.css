@@ -230,6 +230,8 @@ footer .legal{grid-column:1/-1;padding-top:80px;color:var(--slate-5)}
 .hero-toggle:focus-visible{outline:2px solid white;outline-offset:4px}
 .project-intro{display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px var(--g) 24px;border-bottom:1px solid var(--line-soft);text-align:center}
 .authors{display:flex;flex-wrap:wrap;justify-content:center;column-gap:22px;row-gap:6px;max-width:900px;font:400 18px/24px var(--font);letter-spacing:-.3px}
+.authors a{border-bottom:1px solid var(--line-input);transition:color .15s,border-color .15s}
+.authors a:hover{color:var(--accent-ink);border-color:var(--accent)}
 .authors sup,.affiliations sup{font-size:.6em;line-height:0;vertical-align:super;color:var(--accent-ink);margin-left:1px}
 .affiliations{display:flex;flex-wrap:wrap;justify-content:center;column-gap:18px;row-gap:4px}
 .affiliations-note{margin-top:-6px}

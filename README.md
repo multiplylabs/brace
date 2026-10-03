@@ -141,4 +141,4 @@ The page is static HTML, CSS and JavaScript and requires no build step.
 
 ## Camera-ready
 
-When the paper is accepted: add `assets/paper.pdf`, the BibTeX, and the camera-ready and code links, and change the nav tag from "ICRA 2027" to the final venue string.
+When the paper is accepted: add `assets/paper.pdf`, the BibTeX, and the camera-ready and code links, and update the footer venue string.
