@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FFFFFF">
+<title>BRACE: Adapting Whole-Body References for Force and Terrain Aware Humanoid Motion Tracking</title>
+<meta name="description" content="BRACE is a whole-body tracker for humanoid robots that exerts and compensates commanded hand wrenches while following a flat-ground reference on sloped terrain.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BRACE: Adapting Whole-Body References for Force and Terrain Aware Humanoid Motion Tracking">
+<meta property="og:description" content="A whole-body tracker that exerts and compensates commanded hand wrenches while following a flat-ground reference on sloped terrain.">
+<meta property="og:url" content="https://multiplylabs.github.io/brace/">
+<meta property="og:image" content="https://multiplylabs.github.io/brace/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23397FE7'/%3E%3Ctext x='16' y='23' font-family='Arial,sans-serif' font-size='20' font-weight='600' fill='%23fff' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<nav class="top"><div class="wrap">
+  <a class="brand" href="#top"><span class="wordmark">BRACE</span><span class="tag caps">ICRA 2027</span></a>
+  <div class="links caps"><a href="#hardware">Demos</a><a href="#comparisons">Baselines</a><a href="#applications">Applications</a><a href="#method">Method</a><a href="#results">Results</a></div>
+</div></nav>
+<main id="top">
+  <header class="hero" aria-labelledby="project-title">
+    <video class="hero-bg" muted playsinline preload="metadata" data-playlist="syringe_insertion outdoor_squat_teaser outdoor_bicep" poster="assets/video/syringe_insertion.jpg" aria-label="Syringe insertion, kettlebell squats followed by a ramp walk, and outdoor bicep curls" tabindex="-1">
+      <source src="assets/video/syringe_insertion.mp4" type="video/mp4">
+    </video>
+    <div class="hero-title">
+      <h1 id="project-title"><span class="hero-wordmark">BRACE</span><span class="hero-subtitle">Adapting Whole-Body References for Force and Terrain Aware Humanoid Motion Tracking</span></h1>
+    </div>
+    <button class="hero-toggle" type="button" aria-label="Pause teaser">Pause</button>
+  </header>
+  <div class="wrap">
+    <div class="project-intro">
+      <div class="authors">
+        <span>Sudarshan Harithas<sup>1,2</sup></span>
+        <span>Chen Yu<sup>1</sup></span>
+        <span>Juan Borbon<sup>1</sup></span>
+        <span>Shubhankar Mondal<sup>3</sup></span>
+        <span>Srinath Sridhar<sup>2</sup></span>
+        <span>Dingqi Zhang<sup>1</sup></span>
+        <span>Jiuguang Wang<sup>1</sup></span>
+      </div>
+      <p class="affiliations muted"><span><sup>1</sup>Multiply Labs</span><span><sup>2</sup>Brown University</span><span><sup>3</sup>University of New Mexico</span></p>
+      <p class="affiliations-note small muted">Work conducted while Sudarshan Harithas was at Multiply Labs.</p>
+      <div class="project-actions"><a class="btn btn-primary" href="assets/paper.pdf" data-soon data-probe>Read paper</a><a class="btn btn-secondary" href="#hardware">Watch demos</a></div>
+    </div>
+  <section id="hardware" class="media-section">
+    <div class="media-heading"><span class="eyebrow caps">Real robot</span><div><h2>Force- And Terrain-Aware Whole-Body <span class="accent">Control.</span></h2></div></div>
+    <div class="tiles ">
+      <figure class="tile" id="clip-outdoor_squat_ramp" data-video="outdoor_squat_ramp" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Kettlebell squats and ramp walk</h3><span class="small muted">30 s</span></div><p class="muted">Squatting, then walking up the ramp with a 3.5 kg kettlebell.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-outdoor_bicep" data-video="outdoor_bicep" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Outdoor bicep curls</h3><span class="small muted">9 s</span></div><p class="muted">Repeated barbell curls on outdoor terrain.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-syringe_insertion" data-video="syringe_insertion" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Syringe insertion</h3><span class="small muted">9 s · 2× playback</span></div><p class="muted">Commanded hand force for insertion at a tabletop fixture.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-cart_push_slope" data-video="cart_push_slope" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Cart push on slope</h3><span class="small muted">6 s</span></div><p class="muted">Pushing a cart across ramps with a flat-ground reference.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-barbell_lift" data-video="barbell_lift" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Barbell lifting</h3><span class="small muted">10 s</span></div><p class="muted">Following a lifting reference with a 3 kg barbell.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-winch_rotation" data-video="winch_rotation" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Winch rotation</h3><span class="small muted">8 s</span></div><p class="muted">Applying hand torque to turn a forklift winch.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-torque_control" data-video="torque_control" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Torque from two viewpoints</h3><span class="small muted">8 s</span></div><p class="muted">Front and side views of coordinated hand-torque exertion.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-kettlebell_carry" data-video="kettlebell_carry" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Indoor kettlebell carrying</h3><span class="small muted">10 s</span></div><p class="muted">Whole-body tracking while carrying a 3.5 kg kettlebell.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-kettlebell_squat" data-video="kettlebell_squat" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Indoor kettlebell squats</h3><span class="small muted">10 s</span></div><p class="muted">Squatting and rising under a 3.5 kg handheld load.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-resisted_squat" data-video="resisted_squat" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Force exertion while squatting</h3><span class="small muted">8 s</span></div><p class="muted">Squatting while exerting hand forces of up to 9 N.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-force_gauge" data-video="force_gauge" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Measured hand force</h3><span class="small muted">5 s · 3× playback</span></div><p class="muted">Measured hand force during a 9 N command.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-terrain_manipulation" data-video="terrain_manipulation" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Terrain-aware tabletop motion</h3><span class="small muted">14 s</span></div><p class="muted">Tabletop motion with terrain traversal shown in the inset.</p></figcaption>
+      </figure>
+    </div>
+  </section>
+  <section id="comparisons" class="media-section">
+    <div class="media-heading"><span class="eyebrow caps">Baselines</span><div><h2>Baseline <span class="accent">Comparisons.</span></h2><p class="muted">Left: GEAR-SONIC · Right: BRACE</p></div></div>
+    <div class="tiles ">
+      <figure class="tile" id="clip-comparison_box" data-video="comparison_box" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Box-lifting comparison</h3><span class="small muted">8 s</span></div><p class="muted">Lifting an object under load.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-comparison_slope" data-video="comparison_slope" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Slope-traversal comparison</h3><span class="small muted">9 s</span></div><p class="muted">Tracking a flat-ground reference across a ramp.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-comparison_rows" data-video="comparison_rows" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Resistance-band rows</h3><span class="small muted">12 s</span></div><p class="muted">Hand-force exertion against a 2 kg resistance band.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-comparison_lateral" data-video="comparison_lateral" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Lateral resistance-band exercise</h3><span class="small muted">10 s</span></div><p class="muted">Lateral force exertion against a 2 kg resistance band.</p></figcaption>
+      </figure>
+    </div>
+  </section>
+  <section id="applications" class="media-section">
+    <div class="media-heading"><span class="eyebrow caps">Applications</span><div><h2>Autonomy, Interaction, And <span class="accent">Teleoperation.</span></h2></div></div>
+    <div class="tiles ">
+      <figure class="tile" id="clip-vla_execution" data-video="vla_execution" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Autonomous VLA execution</h3><span class="small muted">5 s · 10× playback</span></div><p class="muted">Autonomous banana transfer with a fine-tuned VLA policy.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-teleop_gamepad" data-video="teleop_gamepad" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Interactive directional control</h3><span class="small muted">6 s</span></div><p class="muted">Directional commands guide the robot across ramps.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-teleop_remote" data-video="teleop_remote" data-autoplay>
+        <div class="clip-player">
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <span class="distance-badge">Operator ↔ robot · ~1,000 miles</span>
+        </div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Remote resistance-band rows</h3><span class="small muted">5 s</span></div><p class="muted">Resistance-band rows with an operator about 1,000 miles away.</p></figcaption>
+      </figure>
+      <figure class="tile" id="clip-teleop_remote_slope" data-video="teleop_remote_slope" data-autoplay>
+        <div class="clip-player">
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <span class="distance-badge">Operator ↔ robot · ~1,000 miles</span>
+        </div>
+        <figcaption><div class="clip-meta"><h3 class="title-sm">Remote slope traversal</h3><span class="small muted">10 s · 2× playback</span></div><p class="muted">Slope traversal with an operator about 1,000 miles away.</p></figcaption>
+      </figure>
+    </div>
+
+  </section>
+  <section id="method" class="media-section">
+    <div class="media-heading"><span class="eyebrow caps">Method</span><div><h2>Reference <span class="accent">Transformations.</span></h2></div></div>
+    <div class="method-explainer" data-reference-explainer>
+      <figure class="video method-video" id="reference-transforms" data-video="reference_transforms" data-autoplay>
+        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <figcaption class="clip-meta"><h3 class="title-sm">From Flat-Ground Motion To An Adapted Reference.</h3><span class="small muted">36 s · Method animation</span></figcaption>
+      </figure>
+      <div class="transform-stages" role="group" aria-label="Reference transformation stages">
+        <button type="button" data-time="0" data-panel="reference" data-description="Start with a flat-ground pickup trajectory: the input motion in the left panel of the method figure." aria-controls="reference-transforms method-figure" aria-current="step" disabled><span class="small">0:00</span><span>Flat-ground reference</span></button>
+        <button type="button" data-time="6" data-panel="terrain" data-description="Lift the feet and root to the local surface, then align the soles with the slope. Blue highlights show terrain adjustment." aria-controls="reference-transforms method-figure" disabled><span class="small">0:06</span><span>Terrain adjustment</span></button>
+        <button type="button" data-time="12" data-panel="limits" data-description="Approach without contact force. Figure callout ① bounds the commanded wrench by arm effort and support limits before exertion." aria-controls="reference-transforms method-figure" disabled><span class="small">0:12</span><span>Approach contact</span></button>
+        <button type="button" data-time="17" data-panel="hand" data-description="At contact, the feasible wrench becomes an inward hand-target displacement. The peach arms illustrate hand lead, callout ②." aria-controls="reference-transforms method-figure" disabled><span class="small">0:17</span><span>② Hand lead</span></button>
+        <button type="button" data-time="23" data-panel="brace" data-description="Shift the center of mass within support limits to brace against the reaction. The green torso illustrates COM brace, callout ③." aria-controls="reference-transforms method-figure" disabled><span class="small">0:23</span><span>③ COM brace</span></button>
+      </div>
+      <p class="transform-description muted" data-transform-description>Start with a flat-ground pickup trajectory: the input motion in the left panel of the method figure.</p>
+      <figure class="fig method-figure" id="method-figure" data-transform-panel="reference">
+        <h3 class="title-sm">Method Overview.</h3>
+        <a class="plate pad" href="assets/img/method.jpg" title="Open full-size method figure">
+          <span class="method-diagram">
+            <img src="assets/img/method.jpg" width="2030" height="1120" loading="lazy" alt="Method overview. Left: a flat-ground reference is adjusted to the terrain, then to the commanded wrench through ① feasibility limits, ② hand lead, and ③ COM brace. Top right: exertion and compensation teachers. Bottom right: DAgger distillation into one flow-based student using a task encoder, flow model, and action decoder.">
+            <span class="diagram-focus" aria-hidden="true"></span>
+          </span>
+        </a>
+        <figcaption class="small">The animation follows reference synthesis on the left. <b>① Feasibility limits · ② Hand lead · ③ COM brace.</b> On the right, exertion and compensation teachers are distilled into one student policy.</figcaption>
+      </figure>
+    </div>
+
+    <details class="research-details"><summary>Teacher training and student distillation</summary><div class="detail-body">
+  <div class="grid3">
+    <div class="step">
+      <div><span class="caps">01 &middot; Reference synthesis</span><h3 class="title-sm">Terrain- and wrench-adapted references.</h3>
+        <p class="muted">Terrain conformance lifts footholds and root onto the local surface. For exertion, a wrench transformation resolves the hand displacement that produces the force together with the center-of-mass and center-of-pressure shifts it induces, bounded by arm-effort limits.</p></div>
+    </div>
+    <div class="step">
+      <div><span class="caps">02 &middot; Privileged teachers</span><h3 class="title-sm">One teacher per interaction mode.</h3>
+        <p class="muted">Teacher-E learns to exert force under a virtual wrench field while tracking the wrench-adapted reference. Teacher-C learns to compensate an external wrench while tracking the terrain-adapted reference.</p></div>
+    </div>
+    <div class="step">
+      <div><span class="caps">03 &middot; Flow-matching student</span><h3 class="title-sm">One policy, proprioception only.</h3>
+        <p class="muted">DAgger distills both teachers into one student. A task encoder reads the flat-ground goal, the mode and the wrench command; a flow-matching base models the action distribution from proprioceptive history; an action decoder fuses both.</p></div>
+    </div>
+  </div>
+
+    </div></details>
+  </section>
+  <details class="research-details" id="abstract"><summary>Read the abstract</summary><div class="detail-body abstract-copy">
+
+        <p>Whole-body tracking has become the interface through which operators drive humanoid robots, yet the references it consumes are recorded on level ground and carrying nothing, so the tracker is aware of neither the forces the robot must exchange with objects nor the terrain it must stand on. Existing controllers address one side of this gap: force-capable policies command an end-effector force but prescribe no whole-body pose, while terrain-adaptive trackers treat loads as disturbances to reject rather than wrenches to command.</p>
+        <p>We present BRACE, a whole-body tracker that exerts and compensates commanded hand forces from diverse poses while following a flat-ground reference on sloped terrain. Rather than leaving the tracker to absorb the load and the slope, BRACE folds both into the reference it follows: terrain conformance lifts footholds and root onto the local surface, and a wrench transformation resolves the hand displacement that produces a force jointly with the center-of-mass and center-of-pressure shifts it induces, bounded by teacher-specific arm-effort limits.</p>
+        <p>Separate exertion and compensation teachers are distilled by DAgger into one flow-matching student that runs on proprioception alone, without a height map or measured wrench, so a teleoperator (even in remote locations) can supply a flat-ground trajectory and the robot resolves slope and load onboard. We conduct extensive experiments on the Unitree G1 to demonstrate the ability of BRACE to exert and compensate force and handle diverse terrain in simulation and real robot experiments.</p>
+  </div></details>
+  <details class="research-details" id="results"><summary>Explore quantitative results</summary><div class="detail-body">
+  <div class="stats">
+    <div><div class="stat">&minus;40%</div><span class="caps">Global tracking error vs. best baseline</span></div>
+    <div><div class="stat">+18.25<small> pp</small></div><span class="caps">Success rate vs. best baseline</span></div>
+    <div><div class="stat">6-D</div><span class="caps">Commanded wrench: force and torque</span></div>
+    <div><div class="stat">1</div><span class="caps">Student policy for exertion and compensation</span></div>
+  </div>
+  <p class="note small">Simulation, averaged over the four settings (compensation and exertion, on flat ground and slopes) at each setting's heaviest tested load or command.</p>
+
+  <!-- Results -->
+  <section class="section results-intro" >
+    <div><span class="eyebrow caps">Results</span></div>
+    <div class="lede">
+      <h2>The Harder The Setting, The Larger The <span class="accent">Margin.</span></h2>
+      <hr>
+      <p class="measure">Evaluated in simulation on held-out PHUMA and Bones-seed motions against SONIC, HEFT, TWIST2 and Any2Track. Compensation applies 0&ndash;20&nbsp;N per hand, exertion commands 3&ndash;9&nbsp;N per hand, and slopes range from 4.6&deg; to 17.7&deg;. Every method receives only the flat-ground reference and no terrain information.</p>
+    </div>
+    <div class="side">
+      <div class="kv"><span class="caps">Where the gain comes from</span><p>Retaining global position and force accuracy under load, not tighter pose imitation. Local error stays close to SONIC's throughout.</p></div>
+      <div class="kv"><span class="caps">Success</span><p>Torso, wrists and ankles stay within 0.25&nbsp;m of their reference heights and torso orientation within 1&nbsp;rad for the whole motion, and the robot does not drift from its reference position.</p></div>
+    </div>
+  </section>
+
+  <div class="band flush">
+    <figure class="fig">
+      <a class="plate pad" href="assets/img/results.png" title="Open full-size figure"><img src="assets/img/results.png" width="2400" height="1508" loading="lazy" alt="Line plots of success, global error, local error, velocity error and force error against load or commanded force, for force compensation and force exertion on flat ground and sloped terrain, comparing BRACE with SONIC, HEFT, TWIST2 and Any2Track."></a>
+      <figcaption class="small"><b>Force compensation on (a) flat ground and (b) sloped terrain; force exertion on (c) flat ground and (d) sloped terrain.</b> Columns are success, global error (MPJPE-G), local error (MPJPE-L), velocity error, and force error (exertion only). Each point is the equal-weight mean over the PHUMA and Bones-seed test splits. Shading marks the gap between BRACE and the better of SONIC and HEFT; brackets give this margin at the heaviest command, in percentage points (pp) of success or as relative change in error.</figcaption>
+    </figure>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <div class="table">
+        <table>
+          <caption class="caps">Margin over the better of SONIC and HEFT at the heaviest load or command</caption>
+          <thead><tr><th>Setting</th><th>Load per hand</th><th class="n">Success</th><th class="n">Global error</th><th class="n">Force error</th></tr></thead>
+          <tbody>
+            <tr><td>Compensation, flat ground</td><td>20 N</td><td class="n">+10.7 pp</td><td class="n">&minus;40%</td><td class="n none">&ndash;</td></tr>
+            <tr><td>Compensation, sloped terrain</td><td>20 N</td><td class="n">+22.9 pp</td><td class="n">&minus;43%</td><td class="n none">&ndash;</td></tr>
+            <tr><td>Exertion, flat ground</td><td>9 N</td><td class="n">+5.7 pp</td><td class="n">&minus;35%</td><td class="n">&minus;34%</td></tr>
+            <tr><td>Exertion, sloped terrain</td><td>9 N</td><td class="n">+33.7 pp</td><td class="n">&minus;42%</td><td class="n">&minus;47%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <figure class="fig">
+        <a class="plate" href="assets/img/torque.png" title="Open full-size figure"><img src="assets/img/torque.png" width="1400" height="600" loading="lazy" alt="Moment error against commanded moment per hand, 0.5 to 2.5 newton-metres, on flat ground and sloped terrain. BRACE has the lowest error throughout: 33 percent below the closest baseline on flat ground and 32 percent on slopes."></a>
+        <figcaption class="small"><b>Torque exertion error</b> for commanded moments of 0.5&ndash;2.5&nbsp;N&middot;m per hand. BRACE has the lowest error at every command: 33% below the closest baseline on flat ground and 32% on slopes.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+
+  </div></details>
+  </div>
+</main>
+<footer><div class="wrap compact-footer"><span class="wordmark">BRACE</span><p class="small">ICRA 2027 submission &middot; Multiply Labs &middot; Brown University &middot; University of New Mexico.</p><a class="small" href="https://multiplylabs.com">multiplylabs.com</a></div></footer>
+</body>
+</html>
