@@ -216,7 +216,11 @@ footer .legal{grid-column:1/-1;padding-top:80px;color:var(--slate-5)}
 .comparison-tiles,.application-tiles{padding-top:var(--g);border-top:1px solid var(--line-soft)}
 .clip-player{position:relative}
 .distance-badge{position:absolute;top:12px;left:12px;padding:7px 10px;border-radius:var(--r);background:rgba(8,17,31,.88);color:#fff;font:500 12px/18px var(--font);pointer-events:none}
-@media(max-width:640px){.clip-meta{flex-wrap:wrap;gap:4px}.distance-badge{top:8px;left:8px;padding:5px 8px}}
+/* comparison clips: which side is which, over the footage itself */
+.side-badge{position:absolute;top:12px;padding:6px 10px;border-radius:var(--r);background:rgba(8,17,31,.88);color:#fff;font:600 12px/16px var(--font);letter-spacing:.08em;text-transform:uppercase;pointer-events:none}
+.side-badge.left{left:12px}
+.side-badge.right{right:12px;background:var(--accent-ink)}
+@media(max-width:640px){.clip-meta{flex-wrap:wrap;gap:4px}.distance-badge{top:8px;left:8px;padding:5px 8px}.side-badge{top:8px;padding:4px 7px;font-size:11px}.side-badge.left{left:8px}.side-badge.right{right:8px}}
 
 /* The teaser fills the band edge to edge (cover, centre crop) so clips of different aspect ratios
    never letterbox. The band is sized to the viewport below the sticky nav for a full-screen feel. */
@@ -247,7 +251,12 @@ footer .legal{grid-column:1/-1;padding-top:80px;color:var(--slate-5)}
 .media-section .tiles{padding-top:0}
 .clip-meta h3{font-weight:500}
 .tile figcaption p{font-size:13px;line-height:18px}
-.method-explainer{padding:0 var(--g) var(--g)}
+/* The animation and the figure it explains sit side by side, so the playhead's stage and the
+   highlighted region of the figure are in view together. */
+.method-explainer{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--g);align-items:start;padding:0 var(--g) var(--g)}
+.method-player{min-width:0}
+.method-player .transform-stages button{padding:12px 10px;font-size:14px;line-height:19px}
+.method-player .transform-description{min-height:88px;padding:14px 0 0;font-size:14px;line-height:20px}
 .method-video video{border:1px solid var(--line-soft);background:#fff}
 .method-video .clip-meta{margin:4px 0 18px}
 .transform-stages{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
@@ -258,7 +267,8 @@ footer .legal{grid-column:1/-1;padding-top:80px;color:var(--slate-5)}
 .transform-stages button:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
 .transform-stages button:disabled{cursor:wait}
 .transform-description{min-height:66px;padding:18px 0;font-size:15px;line-height:22px;max-width:105ch}
-.method-figure{padding-top:24px;border-top:1px solid var(--line-soft)}
+.method-figure{padding-top:0;border-top:0}
+@media(max-width:1000px){.method-explainer{grid-template-columns:1fr}.method-figure{padding-top:24px;border-top:1px solid var(--line-soft)}}
 .method-diagram{position:relative;display:block}
 .diagram-focus{position:absolute;border:2px solid var(--accent);border-radius:var(--r);pointer-events:none}
 [data-transform-panel="reference"] .diagram-focus{left:2.7%;top:8.4%;width:20%;height:60%}

@@ -104,22 +104,34 @@
     </div>
   </section>
   <section id="comparisons" class="media-section">
-    <div class="media-heading"><span class="eyebrow caps">Baselines</span><div><h2>Baseline <span class="accent">Comparisons.</span></h2><p class="muted">Left: GEAR-SONIC · Right: BRACE</p></div></div>
+    <div class="media-heading"><span class="eyebrow caps">Baselines</span><div><h2>Baseline <span class="accent">Comparisons.</span></h2><p class="muted">Left: SONIC · Right: Ours</p></div></div>
     <div class="tiles ">
       <figure class="tile" id="clip-comparison_box" data-video="comparison_box" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <div class="clip-player">
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <span class="side-badge left">SONIC</span><span class="side-badge right">Ours</span>
+        </div>
         <figcaption><div class="clip-meta"><h3 class="title-sm">Box-lifting comparison</h3><span class="small muted">8 s</span></div><p class="muted">Lifting an object under load.</p></figcaption>
       </figure>
       <figure class="tile" id="clip-comparison_slope" data-video="comparison_slope" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <div class="clip-player">
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <span class="side-badge left">SONIC</span><span class="side-badge right">Ours</span>
+        </div>
         <figcaption><div class="clip-meta"><h3 class="title-sm">Slope-traversal comparison</h3><span class="small muted">9 s</span></div><p class="muted">Tracking a flat-ground reference across a ramp.</p></figcaption>
       </figure>
       <figure class="tile" id="clip-comparison_rows" data-video="comparison_rows" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <div class="clip-player">
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <span class="side-badge left">SONIC</span><span class="side-badge right">Ours</span>
+        </div>
         <figcaption><div class="clip-meta"><h3 class="title-sm">Resistance-band rows</h3><span class="small muted">12 s</span></div><p class="muted">Hand-force exertion against a 2 kg resistance band.</p></figcaption>
       </figure>
       <figure class="tile" id="clip-comparison_lateral" data-video="comparison_lateral" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+        <div class="clip-player">
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <span class="side-badge left">SONIC</span><span class="side-badge right">Ours</span>
+        </div>
         <figcaption><div class="clip-meta"><h3 class="title-sm">Lateral resistance-band exercise</h3><span class="small muted">10 s</span></div><p class="muted">Lateral force exertion against a 2 kg resistance band.</p></figcaption>
       </figure>
     </div>
@@ -155,6 +167,7 @@
   <section id="method" class="media-section">
     <div class="media-heading"><span class="eyebrow caps">Method</span><div><h2>Reference <span class="accent">Transformations.</span></h2></div></div>
     <div class="method-explainer" data-reference-explainer>
+      <div class="method-player">
       <figure class="video method-video" id="reference-transforms" data-video="reference_transforms" data-autoplay>
         <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
         <figcaption class="clip-meta"><h3 class="title-sm">From Flat-Ground Motion To An Adapted Reference.</h3><span class="small muted">36 s · Method animation</span></figcaption>
@@ -167,6 +180,7 @@
         <button type="button" data-time="23" data-panel="brace" data-description="Shift the center of mass within support limits to brace against the reaction. The green torso illustrates COM brace, callout ③." aria-controls="reference-transforms method-figure" disabled><span class="small">0:23</span><span>③ COM brace</span></button>
       </div>
       <p class="transform-description muted" data-transform-description>Start with a flat-ground pickup trajectory: the input motion in the left panel of the method figure.</p>
+      </div>
       <figure class="fig method-figure" id="method-figure" data-transform-panel="reference">
         <h3 class="title-sm">Method Overview.</h3>
         <a class="plate pad" href="assets/img/method.jpg" title="Open full-size method figure">
