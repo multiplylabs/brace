@@ -44,9 +44,9 @@ change. When an appendix is ready, add it as `assets/appendix.pdf` and add its l
 
 ### Live demo
 
-**Live demo** in the nav and the hero buttons opens the browser demo at
-<https://multiplylabs.github.io/robogym-online/>: the wrench student running client-side in
-MuJoCo-WASM with force exertion and compensation, steerable with WASD.
+The **Live demo** button is a `data-soon` placeholder for now. Its href already points at the
+browser demo, <https://multiplylabs.github.io/robogym-online/>; remove the `data-soon` attribute
+(and add `target="_blank" rel="noopener"`) to switch it on, and add a matching nav link.
 
 ### Code
 
