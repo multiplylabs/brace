@@ -92,8 +92,8 @@ distance between the operator and robot.
 | `comparison_lateral` | Comparisons | Lateral resistance-band exercise |
 | `vla_execution` | Applications | Autonomous VLA execution |
 | `teleop_gamepad` | Applications | Interactive directional control |
-| `teleop_remote` | Applications | Remote resistance-band rows |
-| `teleop_remote_slope` | Applications | Remote slope traversal |
+| `teleop_remote` | Applications | Remote barbell lifting (TRACTION 1:48–2:00, uncropped) |
+| `teleop_remote_slope` | Applications | Remote slope traversal (TRACTION 2:00–2:09, uncropped) |
 | `reference_transforms` | Method | Terrain adjustment, contact, hand lead, and COM brace |
 
 The edit decisions live in `scripts/clips.json`: source intervals, crop rectangles, masks,
