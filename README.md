@@ -37,10 +37,9 @@ Every placeholder switches on as soon as its file is committed. No HTML changes 
 
 ### Paper and appendix
 
-The paper is not published here yet. The **Read paper** button is a `data-soon data-probe`
-placeholder: commit the PDF as `assets/paper.pdf` and the button switches on with no HTML
-change. When an appendix is ready, add it as `assets/appendix.pdf` and add its link next to
-**Read paper**.
+**Read paper** links to the arXiv entry, <https://arxiv.org/abs/2610.07052>, as does the footer's
+arXiv link. There is no PDF in the repo. When an appendix is ready, add it as `assets/appendix.pdf`
+and add its link next to **Read paper**.
 
 ### Live demo
 
