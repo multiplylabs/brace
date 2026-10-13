@@ -290,6 +290,9 @@ footer .legal{grid-column:1/-1;padding-top:80px;color:var(--slate-5)}
 .abstract-copy{padding:28px var(--g);max-width:100ch;font-size:16px;line-height:25px}
 .detail-body .section h2{font-size:32px;line-height:38px}
 .detail-body .section{border-top:0}
+.citation{padding:28px var(--g);border-top:1px solid var(--line-soft)}
+.citation pre{margin:18px 0 0;padding:20px;background:var(--bg-panel);border:1px solid var(--line-soft);border-radius:var(--r);white-space:pre-wrap;overflow-wrap:anywhere;font:400 14px/22px var(--font);letter-spacing:0}
+.citation code{font:inherit}
 footer .compact-footer{display:flex;align-items:center;gap:24px;padding:28px var(--g)}
 footer .compact-footer p{flex:1;color:var(--slate-7)}
 @media(max-width:1000px){.media-heading{grid-template-columns:140px 1fr;gap:20px}}

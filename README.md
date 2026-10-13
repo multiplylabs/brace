@@ -158,4 +158,7 @@ The page is static HTML, CSS and JavaScript and requires no build step.
 
 ## Camera-ready
 
-When the paper is accepted: add `assets/paper.pdf`, the BibTeX, and the camera-ready and code links, and update the footer venue string.
+The public page includes the arXiv BibTeX in the Citation section (`#citation`),
+immediately before the footer.
+
+When the paper is accepted: add `assets/paper.pdf`, update the citation and the camera-ready and code links, and update the footer venue string.
