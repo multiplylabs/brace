@@ -252,11 +252,7 @@ footer .legal{grid-column:1/-1;padding-top:80px;color:var(--slate-5)}
 .overview-video{padding:28px var(--g)}
 .overview-video figure{max-width:720px;margin:0 auto}
 .youtube-player{position:relative;width:100%;aspect-ratio:16/9;min-height:200px;border-radius:var(--r-media);overflow:hidden;background:var(--slate-1)}
-.youtube-poster,.youtube-player iframe{position:absolute;inset:0;display:block;width:100%;height:100%;border:0}
-.youtube-poster img{width:100%;height:100%;object-fit:contain}
-.youtube-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:68px;height:68px;border-radius:50%;background:var(--accent-ink);color:#fff}
-.youtube-poster:hover .youtube-play{background:var(--blue-3)}
-.youtube-poster:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.youtube-player iframe{position:absolute;inset:0;display:block;width:100%;height:100%;border:0}
 .overview-video figcaption{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;margin-top:12px}
 .youtube-link{color:var(--accent-ink)}
 .youtube-link:hover{text-decoration:underline;text-underline-offset:3px}

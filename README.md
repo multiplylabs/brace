@@ -62,10 +62,11 @@ assets stay on the `website` branch.
 
 ### Videos
 
-The full public video appears before the individual demonstrations. Its opening frame is saved
-as `assets/img/full-video-poster.jpg`; clicking it loads the YouTube embed for `jASGzq4K5m0`.
-A separate **Watch on YouTube** link remains available below the player. The embed is loaded
-only on request, and the thumbnail links directly to YouTube when JavaScript is unavailable.
+The full public video appears before the individual demonstrations in a centered YouTube iframe,
+up to 720 pixels wide. Its opening frame, `assets/img/full-video-poster.jpg`, is the iframe's
+initial `srcdoc` cover. Clicking Play navigates that same iframe to the YouTube embed for
+`jASGzq4K5m0`, so playback stays on the page without depending on the site's JavaScript.
+A separate **Watch on YouTube** link remains available below the player.
 
 The page contains 20 distinct demonstrations, a reference-transformation animation, and a silent hero playlist. Each demonstration
 appears once in the galleries; only the teaser reuses clips.
