@@ -1,0 +1,133 @@
+{
+  "source_sha256": "42525f6e600c7a9acd797d347c0237ee8f03a747d56722d727dfe38db4cd91c7",
+  "settings": {
+    "compensation-flat": {
+      "title": "Force compensation · flat ground",
+      "condition": "Flat ground; 0–20 N external load per hand.",
+      "point": "At 20 N load per hand",
+      "metrics": {
+        "tracking": {
+          "title": "Global tracking error",
+          "direction": "Lower is better.",
+          "image": "assets/img/results/compensation-flat-tracking.svg",
+          "mobile_image": "assets/img/results/compensation-flat-tracking-mobile.svg",
+          "ours": "283 mm",
+          "baseline": "HEFT",
+          "baseline_value": "470 mm",
+          "alt": "Global tracking error for force compensation · flat ground, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track."
+        },
+        "success": {
+          "title": "Success rate",
+          "direction": "Higher is better.",
+          "image": "assets/img/results/compensation-flat-success.svg",
+          "mobile_image": "assets/img/results/compensation-flat-success-mobile.svg",
+          "ours": "69.9%",
+          "baseline": "SONIC",
+          "baseline_value": "59.2%",
+          "alt": "Success rate for force compensation · flat ground, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track."
+        }
+      }
+    },
+    "compensation-terrain": {
+      "title": "Force compensation · sloped terrain",
+      "condition": "Slopes of 4.6°–17.7°; 0–20 N external load per hand.",
+      "point": "At 20 N load per hand",
+      "metrics": {
+        "tracking": {
+          "title": "Global tracking error",
+          "direction": "Lower is better.",
+          "image": "assets/img/results/compensation-terrain-tracking.svg",
+          "mobile_image": "assets/img/results/compensation-terrain-tracking-mobile.svg",
+          "ours": "266 mm",
+          "baseline": "Any2Track",
+          "baseline_value": "446 mm",
+          "alt": "Global tracking error for force compensation · sloped terrain, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track."
+        },
+        "success": {
+          "title": "Success rate",
+          "direction": "Higher is better.",
+          "image": "assets/img/results/compensation-terrain-success.svg",
+          "mobile_image": "assets/img/results/compensation-terrain-success-mobile.svg",
+          "ours": "53.7%",
+          "baseline": "SONIC",
+          "baseline_value": "30.7%",
+          "alt": "Success rate for force compensation · sloped terrain, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track."
+        }
+      }
+    },
+    "exertion-flat": {
+      "title": "Force exertion · flat ground",
+      "condition": "Flat ground; 3–9 N commanded force per hand.",
+      "point": "At 9 N command per hand",
+      "metrics": {
+        "tracking": {
+          "title": "Global tracking error",
+          "direction": "Lower is better.",
+          "image": "assets/img/results/exertion-flat-tracking.svg",
+          "mobile_image": "assets/img/results/exertion-flat-tracking-mobile.svg",
+          "ours": "190 mm",
+          "baseline": "HEFT",
+          "baseline_value": "294 mm",
+          "alt": "Global tracking error for force exertion · flat ground, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track."
+        },
+        "success": {
+          "title": "Success rate",
+          "direction": "Higher is better.",
+          "image": "assets/img/results/exertion-flat-success.svg",
+          "mobile_image": "assets/img/results/exertion-flat-success-mobile.svg",
+          "ours": "85.9%",
+          "baseline": "HEFT",
+          "baseline_value": "80.2%",
+          "alt": "Success rate for force exertion · flat ground, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track."
+        },
+        "force": {
+          "title": "Hand-force error",
+          "direction": "Lower is better.",
+          "image": "assets/img/results/exertion-flat-force.svg",
+          "mobile_image": "assets/img/results/exertion-flat-force-mobile.svg",
+          "ours": "1.50 N",
+          "baseline": "SONIC",
+          "baseline_value": "2.27 N",
+          "alt": "Hand-force error for force exertion · flat ground, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track."
+        }
+      }
+    },
+    "exertion-terrain": {
+      "title": "Force exertion · sloped terrain",
+      "condition": "Slopes of 4.6°–17.7°; 3–9 N commanded force per hand.",
+      "point": "At 9 N command per hand",
+      "metrics": {
+        "tracking": {
+          "title": "Global tracking error",
+          "direction": "Lower is better.",
+          "image": "assets/img/results/exertion-terrain-tracking.svg",
+          "mobile_image": "assets/img/results/exertion-terrain-tracking-mobile.svg",
+          "ours": "195 mm",
+          "baseline": "HEFT",
+          "baseline_value": "335 mm",
+          "alt": "Global tracking error for force exertion · sloped terrain, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track."
+        },
+        "success": {
+          "title": "Success rate",
+          "direction": "Higher is better.",
+          "image": "assets/img/results/exertion-terrain-success.svg",
+          "mobile_image": "assets/img/results/exertion-terrain-success-mobile.svg",
+          "ours": "78.6%",
+          "baseline": "HEFT",
+          "baseline_value": "44.8%",
+          "alt": "Success rate for force exertion · sloped terrain, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track."
+        },
+        "force": {
+          "title": "Hand-force error",
+          "direction": "Lower is better.",
+          "image": "assets/img/results/exertion-terrain-force.svg",
+          "mobile_image": "assets/img/results/exertion-terrain-force-mobile.svg",
+          "ours": "1.24 N",
+          "baseline": "SONIC",
+          "baseline_value": "2.33 N",
+          "alt": "Hand-force error for force exertion · sloped terrain, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track."
+        }
+      }
+    }
+  }
+}

@@ -46,16 +46,17 @@ Media placeholders switch on as soon as their files are committed to `website`.
 arXiv link. There is no PDF in the repo. When an appendix is ready, add it as `assets/appendix.pdf`
 and add its link next to **Read paper**.
 
-### Live demo
+### Interactive demo
 
-The **Live demo** button and matching navigation link open the browser demo,
+The **Try Interactive demo** button and matching navigation link open the browser demo,
 <https://multiplylabs.github.io/robogym-online/>, in a new tab. A pale blue fill
 and small blue dot give the button a subtle highlight using the existing colour tokens.
+A note below the main demo button recommends Google Chrome.
 
 ### Code
 
 **Code** links to <https://github.com/multiplylabs/brace> immediately after
-**Live demo** in the action row and navigation. The default `main` branch README
+**Try Interactive demo** in the action row and navigation. The default `main` branch README
 shows the code release status and paper teaser figure. The page and its
 assets stay on the `website` branch.
 
@@ -163,6 +164,33 @@ python scripts/render-reference.py --source path/to/studio_visibility_refinement
 ```
 
 The page is static HTML, CSS and JavaScript and requires no build step.
+
+## Results comparisons
+
+The Results section shows one condition and metric at a time. Visitors can select
+flat or sloped terrain, compensation or exertion, and tracking error, success rate,
+or hand-force error (exertion only). The adjacent values identify BRACE and the
+best of SONIC, HEFT, TWIST2 and Any2Track at that setting's highest tested load.
+The complete paper plot grid, comparison table and evaluation details remain
+inside an expandable section. The table retains its stated SONIC/HEFT comparison.
+
+`data/results-values.csv` preserves the relevant columns from
+`traction_experiments_draft/results_terrain_035/figure_values.csv`, the source
+of the existing paper plot. The renderer follows its equal-weight averaging of
+PHUMA and Bones-seed, skipping missing dataset values as the paper renderer does.
+It uses the existing 0.35 m terrain success criterion and recorded evaluation
+horizons; it does not recompute benchmarks. The force-error metric is the reported
+mean absolute per-clip bias, not a framewise absolute error.
+
+Rebuild the SVG comparisons and `assets/data/results.json` with Matplotlib:
+
+```sh
+python scripts/render-results.py --font path/to/Barlow-Medium.ttf
+```
+
+Each chart has a separate phone layout with larger text. The data manifest records
+the CSV's SHA-256 for reproducibility. Without JavaScript, the initial comparison
+and the expandable full results remain available.
 
 ## Camera-ready
 

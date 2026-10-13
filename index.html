@@ -22,7 +22,7 @@
 <body>
 <nav class="top"><div class="wrap">
   <a class="brand" href="#top"><span class="wordmark">BRACE</span></a>
-  <div class="links caps"><a href="#hardware">Demos</a><a href="#comparisons">Baselines</a><a href="#applications">Applications</a><a href="#method">Method</a><a href="#results">Results</a><a class="nav-demo" href="https://multiplylabs.github.io/robogym-online/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a><a class="nav-code" href="https://github.com/multiplylabs/brace" target="_blank" rel="noopener">Code</a></div>
+  <div class="links caps"><a href="#hardware">Demos</a><a href="#comparisons">Baselines</a><a href="#applications">Applications</a><a href="#method">Method</a><a href="#results">Results</a><a class="nav-demo" href="https://multiplylabs.github.io/robogym-online/" target="_blank" rel="noopener" aria-describedby="demo-browser-note">Try Interactive demo <span aria-hidden="true">↗</span></a><a class="nav-code" href="https://github.com/multiplylabs/brace" target="_blank" rel="noopener">Code</a></div>
 </div></nav>
 <main id="top">
   <header class="hero" aria-labelledby="project-title">
@@ -47,7 +47,15 @@
         <a href="https://www.robo.guru/" target="_blank" rel="noopener">Jiuguang Wang<sup>1</sup></a>
       </div>
       <p class="affiliations"><span><sup>1</sup>Multiply Labs</span><span><sup>2</sup>Brown University</span><span><sup>3</sup>University of New Mexico</span></p>
-      <div class="project-actions"><a class="btn btn-primary" href="https://arxiv.org/abs/2610.07052" target="_blank" rel="noopener">Read paper</a><a class="btn btn-secondary btn-demo" href="https://multiplylabs.github.io/robogym-online/" target="_blank" rel="noopener">Live demo <span aria-hidden="true">↗</span></a><a class="btn btn-secondary btn-code" href="https://github.com/multiplylabs/brace" target="_blank" rel="noopener">Code</a><a class="btn btn-secondary" href="#hardware">Watch demos</a></div>
+      <div class="project-actions">
+        <a class="btn btn-primary" href="https://arxiv.org/abs/2610.07052" target="_blank" rel="noopener">Read paper</a>
+        <div class="demo-action">
+          <a class="btn btn-secondary btn-demo" href="https://multiplylabs.github.io/robogym-online/" target="_blank" rel="noopener" aria-describedby="demo-browser-note">Try Interactive demo <span aria-hidden="true">↗</span></a>
+          <span class="small muted" id="demo-browser-note">Google Chrome recommended</span>
+        </div>
+        <a class="btn btn-secondary btn-code" href="https://github.com/multiplylabs/brace" target="_blank" rel="noopener">Code</a>
+        <a class="btn btn-secondary" href="#hardware">Watch demos</a>
+      </div>
     </div>
   <section id="hardware" class="media-section">
     <div class="media-heading"><span class="eyebrow caps">Real robot</span><div><h2>Force- And Terrain-Aware Whole-Body <span class="accent">Control.</span></h2></div></div>
@@ -201,7 +209,7 @@
             <span class="diagram-focus" aria-hidden="true"></span>
           </span>
         </a>
-        <figcaption class="small">The animation follows reference synthesis on the left. <b>① Feasibility limits · ② Hand lead · ③ COM brace.</b> On the right, exertion and compensation teachers are distilled into one student policy.</figcaption>
+        <figcaption class="small">The animation follows reference synthesis on the left. <b>① Feasibility limits · ② Hand lead · ③ COM brace.</b> A <b>6-D wrench</b> commands hand force and torque. On the right, exertion and compensation teachers are distilled into <b>one student policy</b>.</figcaption>
       </figure>
     </div>
 
@@ -229,33 +237,58 @@
         <p>We present BRACE, a whole-body tracker that exerts and compensates commanded hand forces from diverse poses while following a flat-ground reference on sloped terrain. Rather than leaving the tracker to absorb the load and the slope, BRACE folds both into the reference it follows: terrain conformance lifts footholds and root onto the local surface, and a wrench transformation resolves the hand displacement that produces a force jointly with the center-of-mass and center-of-pressure shifts it induces, bounded by teacher-specific arm-effort limits.</p>
         <p>Separate exertion and compensation teachers are distilled by DAgger into one flow-matching student that runs on proprioception alone, without a height map or measured wrench, so a teleoperator (even in remote locations) can supply a flat-ground trajectory and the robot resolves slope and load onboard. We conduct extensive experiments on the Unitree G1 to demonstrate the ability of BRACE to exert and compensate force and handle diverse terrain in simulation and real robot experiments.</p>
   </div></details>
-  <details class="research-details" id="results"><summary>Explore quantitative results</summary><div class="detail-body">
-  <div class="stats">
-    <div><div class="stat">&minus;40%</div><span class="caps">Global tracking error vs. best baseline</span></div>
-    <div><div class="stat">+18.25<small> pp</small></div><span class="caps">Success rate vs. best baseline</span></div>
-    <div><div class="stat">6-D</div><span class="caps">Commanded wrench: force and torque</span></div>
-    <div><div class="stat">1</div><span class="caps">Student policy for exertion and compensation</span></div>
-  </div>
-  <p class="note small">Simulation, averaged over the four settings (compensation and exertion, on flat ground and slopes) at each setting's heaviest tested load or command.</p>
-
-  <!-- Results -->
-  <section class="section results-intro" >
-    <div><span class="eyebrow caps">Results</span></div>
-    <div class="lede">
-      <h2>The Harder The Setting, The Larger The <span class="accent">Margin.</span></h2>
-      <hr>
-      <p class="measure">Evaluated in simulation on held-out PHUMA and Bones-seed motions against SONIC, HEFT, TWIST2 and Any2Track. Compensation applies 0&ndash;20&nbsp;N per hand, exertion commands 3&ndash;9&nbsp;N per hand, and slopes range from 4.6&deg; to 17.7&deg;. Every method receives only the flat-ground reference and no terrain information.</p>
+  <section id="results" class="media-section" aria-labelledby="results-title">
+    <div class="media-heading"><span class="eyebrow caps">Results</span><div><h2 id="results-title">Tracking and force accuracy across loads and <span class="accent">terrain.</span></h2><p class="muted">Simulation on held-out PHUMA and Bones-seed motions.</p></div></div>
+    <div class="results-explorer" data-results-explorer>
+      <div class="result-controls">
+        <label for="result-setting">Tested condition
+          <select id="result-setting" aria-controls="result-comparison" disabled>
+            <option value="compensation-flat">Force compensation · Flat ground</option>
+            <option value="compensation-terrain">Force compensation · Sloped terrain</option>
+            <option value="exertion-flat">Force exertion · Flat ground</option>
+            <option value="exertion-terrain">Force exertion · Sloped terrain</option>
+          </select>
+        </label>
+        <label for="result-metric">Metric
+          <select id="result-metric" aria-controls="result-comparison" disabled>
+            <option value="tracking">Global tracking error</option>
+            <option value="success">Success rate</option>
+            <option value="force" disabled>Hand-force error</option>
+          </select>
+        </label>
+      </div>
+      <div class="result-comparison" id="result-comparison">
+        <figure class="result-chart">
+          <figcaption><h3 class="title-sm" data-result-title>Global tracking error</h3><span class="muted" data-result-direction>Lower is better.</span></figcaption>
+          <a href="assets/img/results/compensation-flat-tracking.svg" data-result-link title="Open full-size comparison">
+            <picture>
+              <source media="(max-width:640px)" srcset="assets/img/results/compensation-flat-tracking-mobile.svg" width="420" height="440" data-result-mobile>
+              <img src="assets/img/results/compensation-flat-tracking.svg" width="600" height="470" loading="lazy" data-result-image alt="Global tracking error for force compensation on flat ground, comparing BRACE, SONIC, HEFT, TWIST2 and Any2Track.">
+            </picture>
+          </a>
+        </figure>
+        <aside class="result-context" aria-live="polite" aria-atomic="true">
+          <div><h3 class="title-sm" data-result-setting-title>Force compensation · flat ground</h3><p class="muted" data-result-condition>Flat ground; 0–20 N external load per hand.</p></div>
+          <div class="result-endpoint">
+            <h4 class="title-sm" data-result-point>At 20 N load per hand</h4>
+            <dl>
+              <div><dt>BRACE</dt><dd data-result-ours>283 mm</dd></div>
+              <div><dt><span data-result-baseline>HEFT</span><span class="muted result-baseline-note">Best baseline at this load</span></dt><dd data-result-baseline-value>470 mm</dd></div>
+            </dl>
+          </div>
+          <p class="muted result-context-note">Baseline selected from SONIC, HEFT, TWIST2 and Any2Track for the displayed metric and load.</p>
+        </aside>
+      </div>
     </div>
-    <div class="side">
-      <div class="kv"><span class="caps">Where the gain comes from</span><p>Retaining global position and force accuracy under load, not tighter pose imitation. Local error stays close to SONIC's throughout.</p></div>
-      <div class="kv"><span class="caps">Success</span><p>Torso, wrists and ankles stay within 0.25&nbsp;m of their reference heights and torso orientation within 1&nbsp;rad for the whole motion, and the robot does not drift from its reference position.</p></div>
-    </div>
-  </section>
-
+    <details class="research-details" id="full-results"><summary>Full plots, comparison table and evaluation details</summary><div class="detail-body">
+      <div class="results-protocol">
+        <p>Each point averages the PHUMA and Bones-seed test splits equally where values are available. Methods receive the flat-ground reference without terrain information. Global tracking error is MPJPE-G; force error is the reported mean absolute per-clip force bias.</p>
+        <p>Success combines the recorded height/orientation checks with a position-error criterion: mean torso horizontal drift ≤0.5 m on flat ground, or mean global body error ≤0.35 m on terrain. Terrain results use the recorded evaluation horizon, including the five-second cap in Bones-seed runs.</p>
+      </div>
   <div class="band flush">
     <figure class="fig">
       <a class="plate pad" href="assets/img/results.png" title="Open full-size figure"><img src="assets/img/results.png" width="2400" height="1508" loading="lazy" alt="Line plots of success, global error, local error, velocity error and force error against load or commanded force, for force compensation and force exertion on flat ground and sloped terrain, comparing BRACE with SONIC, HEFT, TWIST2 and Any2Track."></a>
-      <figcaption class="small"><b>Force compensation on (a) flat ground and (b) sloped terrain; force exertion on (c) flat ground and (d) sloped terrain.</b> Columns are success, global error (MPJPE-G), local error (MPJPE-L), velocity error, and force error (exertion only). Each point is the equal-weight mean over the PHUMA and Bones-seed test splits. Shading marks the gap between BRACE and the better of SONIC and HEFT; brackets give this margin at the heaviest command, in percentage points (pp) of success or as relative change in error.</figcaption>
+      <figcaption class="small"><b>Force compensation on (a) flat ground and (b) sloped terrain; force exertion on (c) flat ground and (d) sloped terrain.</b> Columns are success, global error (MPJPE-G), local error (MPJPE-L), velocity error, and force error (exertion only). Each point is the equal-weight mean over the available PHUMA and Bones-seed test-split values. Shading marks the gap between BRACE and the better of SONIC and HEFT; brackets give this margin at the heaviest command, in percentage points (pp) of success or as relative change in error.</figcaption>
     </figure>
   </div>
 
@@ -281,9 +314,8 @@
       </figure>
     </div>
   </div>
-
-
-  </div></details>
+    </div></details>
+  </section>
   <section class="citation" id="citation" aria-labelledby="citation-title">
     <h2 class="h5" id="citation-title">Citation.</h2>
     <pre><code>@article{harithas2026brace,

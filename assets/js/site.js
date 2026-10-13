@@ -125,4 +125,42 @@
     }
   }, { rootMargin: "100% 0px" });
   for (const slot of document.querySelectorAll("[data-video]")) nearViewport.observe(slot);
+
+  const results = document.querySelector("[data-results-explorer]");
+  if (results) {
+    const setting = results.querySelector("#result-setting");
+    const metric = results.querySelector("#result-metric");
+    const write = (key, value) => { results.querySelector(`[data-result-${key}]`).textContent = value; };
+    fetch("assets/data/results.json").then((response) => {
+      if (!response.ok) throw new Error("Results data unavailable");
+      return response.json();
+    }).then(({ settings }) => {
+      const update = () => {
+        const selected = settings[setting.value];
+        for (const option of metric.options) option.disabled = !selected.metrics[option.value];
+        if (!selected.metrics[metric.value]) metric.value = "tracking";
+        const comparison = selected.metrics[metric.value];
+        const image = results.querySelector("[data-result-image]");
+        results.querySelector("[data-result-mobile]").srcset = comparison.mobile_image;
+        image.src = comparison.image;
+        image.alt = comparison.alt;
+        results.querySelector("[data-result-link]").href = comparison.image;
+        write("title", comparison.title);
+        write("direction", comparison.direction);
+        write("setting-title", selected.title);
+        write("condition", selected.condition);
+        write("point", selected.point);
+        write("ours", comparison.ours);
+        write("baseline", comparison.baseline);
+        write("baseline-value", comparison.baseline_value);
+      };
+      setting.addEventListener("change", update);
+      metric.addEventListener("change", update);
+      update();
+      setting.disabled = metric.disabled = false;
+    }).catch(() => {
+      // The initial comparison and expandable full results still work without the data file.
+      results.querySelector(".result-controls").hidden = true;
+    });
+  }
 })();
