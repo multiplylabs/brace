@@ -49,7 +49,9 @@ and small blue dot give the button a subtle highlight using the existing colour 
 
 ### Code
 
-When the code repo is ready, add its link next to **Read paper** in `index.html`.
+**Code · Coming soon** appears immediately after **Live demo** in the action row
+and navigation. These are disabled placeholders with no destination. When the
+code repo is public, replace them with links and remove the coming-soon badges.
 
 ### Videos
 
