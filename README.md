@@ -54,10 +54,10 @@ and small blue dot give the button a subtle highlight using the existing colour 
 
 ### Code
 
-**Code · Coming soon** links to <https://github.com/multiplylabs/brace> immediately
-after **Live demo** in the action row and navigation. The default `main` branch
-contains the code release information; keep the badges until the implementation
-is released. The page and its assets stay on the `website` branch.
+**Code** links to <https://github.com/multiplylabs/brace> immediately after
+**Live demo** in the action row and navigation. The default `main` branch README
+shows the code release status and paper teaser figure. The page and its
+assets stay on the `website` branch.
 
 ### Videos
 
@@ -130,9 +130,10 @@ After any edit, visually check the entire affected
 clip, including its first and last frames. The hero automatically uses the updated clip. Posters use the same treatment as their clips. Keep individual
 demonstrations below 20 MB.
 
-Players loop silently while visible and pause off screen. Reduced-motion preferences disable
-automatic playback, and controls remain available for manual playback. The hero has a separate
-Play/Pause button.
+The teaser plays its silent playlist automatically while visible, with no Play/Pause
+button. It continues to autoplay when reduced motion is requested. Gallery players
+respect reduced-motion preferences and retain their native controls. Videos pause
+off screen or in a hidden tab and resume when visible.
 
 ### Reference-transform animation
 

@@ -26,7 +26,7 @@ A strict, flat house style. Match it rather than inventing new patterns.
 Driven by `assets/js/site.js`:
 
 - `a[data-soon][data-probe]`: disabled ("Soon") until its href exists. The **Read paper** button is one: it switches on by itself once `assets/paper.pdf` is committed.
-- `a[data-soon]`: disabled until the attribute is removed by hand. The Code links are active links to the repository's default branch; their coming-soon badges describe the implementation release status.
+- `a[data-soon]`: disabled until the attribute is removed by hand. The Code links are active links to the repository's default branch. Release status appears in that branch's README, not on the website.
 - `[data-video="name"]`: becomes a `<video>` once `assets/video/name.mp4` exists; `name.jpg` is its poster. Players are created as their slot comes within a screen of the viewport, with the clip fetched only when it is in view. `data-autoplay` makes it a muted loop that plays while on screen.
 
 ## Verifying changes

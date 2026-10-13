@@ -14,28 +14,26 @@
   }
 
   const motion = matchMedia("(prefers-reduced-motion: reduce)");
+  const hero = document.querySelector(".hero-bg");
   const visible = new Set();
   const loops = new Set();
-  const manuallyPaused = new WeakSet();
+  const autoPlays = (video) => video === hero || !motion.matches;
   const onScreen = new IntersectionObserver((entries) => {
     for (const { target, isIntersecting } of entries) {
       if (isIntersecting) visible.add(target); else visible.delete(target);
-      if (isIntersecting && !motion.matches && !document.hidden && !manuallyPaused.has(target)) target.play().catch(() => {});
+      if (isIntersecting && autoPlays(target) && !document.hidden) target.play().catch(() => {});
       else target.pause();
     }
   }, { threshold: 0.5 });
   const updatePlayback = () => {
     for (const video of loops) {
-      if (!motion.matches && !document.hidden && visible.has(video) && !manuallyPaused.has(video)) video.play().catch(() => {});
+      if (autoPlays(video) && !document.hidden && visible.has(video)) video.play().catch(() => {});
       else video.pause();
     }
   };
   motion.addEventListener("change", updatePlayback);
   document.addEventListener("visibilitychange", updatePlayback);
-  const hero = document.querySelector(".hero-bg");
   if (hero) {
-    hero.removeAttribute("autoplay");
-    hero.pause();
     const playlist = hero.dataset.playlist?.trim().split(/\s+/) ?? [];
     if (playlist.length) {
       let clipIndex = 0;
@@ -51,30 +49,11 @@
       hero.addEventListener("ended", () => {
         clipIndex = (clipIndex + 1) % playlist.length;
         selectClip();
-        if (!document.hidden && visible.has(hero) && !manuallyPaused.has(hero)) hero.play().catch(() => {});
+        if (!document.hidden && visible.has(hero)) hero.play().catch(() => {});
       });
     }
     loops.add(hero);
     onScreen.observe(hero);
-    const toggle = document.querySelector(".hero-toggle");
-    if (toggle) {
-      const updateToggle = () => {
-        toggle.textContent = hero.paused ? "Play" : "Pause";
-        toggle.setAttribute("aria-label", `${hero.paused ? "Play" : "Pause"} teaser`);
-      };
-      toggle.addEventListener("click", () => {
-        if (hero.paused) {
-          manuallyPaused.delete(hero);
-          hero.play().catch(() => {});
-        } else {
-          manuallyPaused.add(hero);
-          hero.pause();
-        }
-      });
-      hero.addEventListener("play", updateToggle);
-      hero.addEventListener("pause", updateToggle);
-      updateToggle();
-    }
   }
 
   const connectReferenceStages = (slot, video) => {
