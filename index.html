@@ -237,23 +237,31 @@
         <p>We present BRACE, a whole-body tracker that exerts and compensates commanded hand forces from diverse poses while following a flat-ground reference on sloped terrain. Rather than leaving the tracker to absorb the load and the slope, BRACE folds both into the reference it follows: terrain conformance lifts footholds and root onto the local surface, and a wrench transformation resolves the hand displacement that produces a force jointly with the center-of-mass and center-of-pressure shifts it induces, bounded by teacher-specific arm-effort limits.</p>
         <p>Separate exertion and compensation teachers are distilled by DAgger into one flow-matching student that runs on proprioception alone, without a height map or measured wrench, so a teleoperator (even in remote locations) can supply a flat-ground trajectory and the robot resolves slope and load onboard. We conduct extensive experiments on the Unitree G1 to demonstrate the ability of BRACE to exert and compensate force and handle diverse terrain in simulation and real robot experiments.</p>
   </div></details>
-  <section id="results" class="media-section" aria-labelledby="results-title">
+  <details id="results" class="research-details results-details">
+    <summary>Quantitative results <span class="results-summary-note muted">Compare tracking, success and hand-force accuracy</span></summary>
+    <div class="detail-body">
     <div class="media-heading"><span class="eyebrow caps">Results</span><div><h2 id="results-title">Tracking and force accuracy across loads and <span class="accent">terrain.</span></h2><p class="muted">Simulation on held-out PHUMA and Bones-seed motions.</p></div></div>
     <div class="results-explorer" data-results-explorer>
       <div class="result-controls">
-        <label for="result-setting">Tested condition
-          <select id="result-setting" aria-controls="result-comparison" disabled>
-            <option value="compensation-flat">Force compensation · Flat ground</option>
-            <option value="compensation-terrain">Force compensation · Sloped terrain</option>
-            <option value="exertion-flat">Force exertion · Flat ground</option>
-            <option value="exertion-terrain">Force exertion · Sloped terrain</option>
-          </select>
-        </label>
+        <fieldset>
+          <legend>Interaction</legend>
+          <div class="result-options">
+            <label><input type="radio" name="result-mode" value="compensation" aria-controls="result-comparison" checked disabled><span>Compensate loads</span></label>
+            <label><input type="radio" name="result-mode" value="exertion" aria-controls="result-comparison" disabled><span>Exert force</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Terrain</legend>
+          <div class="result-options">
+            <label><input type="radio" name="result-ground" value="flat" aria-controls="result-comparison" checked disabled><span>Flat ground</span></label>
+            <label><input type="radio" name="result-ground" value="terrain" aria-controls="result-comparison" disabled><span>Sloped terrain</span></label>
+          </div>
+        </fieldset>
         <label for="result-metric">Metric
           <select id="result-metric" aria-controls="result-comparison" disabled>
             <option value="tracking">Global tracking error</option>
             <option value="success">Success rate</option>
-            <option value="force" disabled>Hand-force error</option>
+            <option value="force" disabled>Hand-force error (exertion only)</option>
           </select>
         </label>
       </div>
@@ -315,7 +323,8 @@
     </div>
   </div>
     </div></details>
-  </section>
+    </div>
+  </details>
   <section class="citation" id="citation" aria-labelledby="citation-title">
     <h2 class="h5" id="citation-title">Citation.</h2>
     <pre><code>@article{harithas2026brace,

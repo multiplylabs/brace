@@ -167,9 +167,11 @@ The page is static HTML, CSS and JavaScript and requires no build step.
 
 ## Results comparisons
 
-The Results section shows one condition and metric at a time. Visitors can select
-flat or sloped terrain, compensation or exertion, and tracking error, success rate,
-or hand-force error (exertion only). The adjacent values identify BRACE and the
+The Quantitative results section is collapsed by default; its navigation link
+opens it directly. Inside, separate choices for **Compensate loads / Exert force**
+and **Flat ground / Sloped terrain** show the available conditions at a glance.
+A metric selector offers tracking error, success rate or hand-force error
+(exertion only). One comparison is visible at a time. The adjacent values identify BRACE and the
 best of SONIC, HEFT, TWIST2 and Any2Track at that setting's highest tested load.
 The complete paper plot grid, comparison table and evaluation details remain
 inside an expandable section. The table retains its stated SONIC/HEFT comparison.

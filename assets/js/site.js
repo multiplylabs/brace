@@ -128,7 +128,18 @@
 
   const results = document.querySelector("[data-results-explorer]");
   if (results) {
-    const setting = results.querySelector("#result-setting");
+    const disclosure = document.querySelector("#results");
+    const revealResults = () => {
+      if (location.hash !== "#results" && location.hash !== "#full-results") return;
+      disclosure.open = true;
+      if (location.hash === "#full-results") document.querySelector("#full-results").open = true;
+    };
+    for (const link of document.querySelectorAll('a[href="#results"]')) {
+      link.addEventListener("click", () => { disclosure.open = true; });
+    }
+    window.addEventListener("hashchange", revealResults);
+    revealResults();
+    const choices = [...results.querySelectorAll('.result-options input')];
     const metric = results.querySelector("#result-metric");
     const write = (key, value) => { results.querySelector(`[data-result-${key}]`).textContent = value; };
     fetch("assets/data/results.json").then((response) => {
@@ -136,8 +147,11 @@
       return response.json();
     }).then(({ settings }) => {
       const update = () => {
-        const selected = settings[setting.value];
+        const mode = results.querySelector('[name="result-mode"]:checked').value;
+        const ground = results.querySelector('[name="result-ground"]:checked').value;
+        const selected = settings[`${mode}-${ground}`];
         for (const option of metric.options) option.disabled = !selected.metrics[option.value];
+        metric.querySelector('[value="force"]').textContent = mode === "exertion" ? "Hand-force error" : "Hand-force error (exertion only)";
         if (!selected.metrics[metric.value]) metric.value = "tracking";
         const comparison = selected.metrics[metric.value];
         const image = results.querySelector("[data-result-image]");
@@ -154,10 +168,11 @@
         write("baseline", comparison.baseline);
         write("baseline-value", comparison.baseline_value);
       };
-      setting.addEventListener("change", update);
+      for (const choice of choices) choice.addEventListener("change", update);
       metric.addEventListener("change", update);
       update();
-      setting.disabled = metric.disabled = false;
+      for (const choice of choices) choice.disabled = false;
+      metric.disabled = false;
     }).catch(() => {
       // The initial comparison and expandable full results still work without the data file.
       results.querySelector(".result-controls").hidden = true;
