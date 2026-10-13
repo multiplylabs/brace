@@ -1,5 +1,29 @@
 // The clips and posters contain the reviewed crops and redactions.
 (() => {
+  // Keep the opening frame visible until the visitor starts the full video.
+  for (const player of document.querySelectorAll("[data-youtube]")) {
+    const poster = player.querySelector(".youtube-poster");
+    poster.setAttribute("role", "button");
+    poster.addEventListener("keydown", (event) => {
+      if (event.key === " ") {
+        event.preventDefault();
+        poster.click();
+      }
+    });
+    poster.addEventListener("click", (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube-nocookie.com/embed/${player.dataset.youtube}?autoplay=1&playsinline=1&rel=0`;
+      iframe.title = "BRACE: full video";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.allowFullscreen = true;
+      player.replaceChildren(iframe);
+      iframe.focus();
+    });
+  }
+
   const exists = (url) => fetch(url, { method: "HEAD", cache: "no-cache" }).then((r) => r.ok, () => false);
   for (const a of document.querySelectorAll("a[data-soon]")) {
     a.setAttribute("aria-disabled", "true");
