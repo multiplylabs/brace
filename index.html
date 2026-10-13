@@ -51,56 +51,65 @@
     </div>
   <section id="hardware" class="media-section">
     <div class="media-heading"><span class="eyebrow caps">Real robot</span><div><h2>Force- And Terrain-Aware Whole-Body <span class="accent">Control.</span></h2></div></div>
-    <div class="tiles ">
-      <figure class="tile" id="clip-outdoor_squat_ramp" data-video="outdoor_squat_ramp" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Kettlebell squats and ramp walk</h3><span class="small muted">30 s</span></div><p class="muted">Squatting, then walking up the ramp with a 3.5 kg kettlebell.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-outdoor_bicep" data-video="outdoor_bicep" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Outdoor bicep curls</h3><span class="small muted">9 s</span></div><p class="muted">Repeated barbell curls on outdoor terrain.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-syringe_insertion" data-video="syringe_insertion" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Syringe insertion</h3><span class="small muted">9 s · 2× playback</span></div><p class="muted">Commanded hand force for insertion at a tabletop fixture.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-cart_push_slope" data-video="cart_push_slope" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Cart push on slope</h3><span class="small muted">6 s</span></div><p class="muted">Pushing a cart across ramps with a flat-ground reference.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-barbell_lift" data-video="barbell_lift" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Barbell lifting</h3><span class="small muted">10 s</span></div><p class="muted">Following a lifting reference with a 3 kg barbell.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-winch_rotation" data-video="winch_rotation" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Winch rotation</h3><span class="small muted">8 s</span></div><p class="muted">Applying hand torque to turn a forklift winch.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-torque_control" data-video="torque_control" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Torque from two viewpoints</h3><span class="small muted">8 s</span></div><p class="muted">Front and side views of coordinated hand-torque exertion.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-kettlebell_carry" data-video="kettlebell_carry" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Indoor kettlebell carrying</h3><span class="small muted">10 s</span></div><p class="muted">Whole-body tracking while carrying a 3.5 kg kettlebell.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-kettlebell_squat" data-video="kettlebell_squat" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Indoor kettlebell squats</h3><span class="small muted">10 s</span></div><p class="muted">Squatting and rising under a 3.5 kg handheld load.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-resisted_squat" data-video="resisted_squat" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Force exertion while squatting</h3><span class="small muted">8 s</span></div><p class="muted">Squatting while exerting hand forces of up to 9 N.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-force_gauge" data-video="force_gauge" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Measured hand force</h3><span class="small muted">5 s · 3× playback</span></div><p class="muted">Measured hand force during a 9 N command.</p></figcaption>
-      </figure>
-      <figure class="tile" id="clip-terrain_manipulation" data-video="terrain_manipulation" data-autoplay>
-        <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
-        <figcaption><div class="clip-meta"><h3 class="title-sm">Terrain-aware tabletop motion</h3><span class="small muted">14 s</span></div><p class="muted">Tabletop motion with terrain traversal shown in the inset.</p></figcaption>
-      </figure>
-    </div>
+    <section class="demo-group" id="force-compensation" aria-labelledby="force-compensation-title">
+      <h3 class="demo-group-heading" id="force-compensation-title">Force Compensation.</h3>
+      <div class="tiles">
+        <figure class="tile" id="clip-outdoor_squat_ramp" data-video="outdoor_squat_ramp" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Outdoor terrain · Ramp</span><div class="clip-meta"><h4 class="title-sm">Kettlebell squats and ramp walk</h4><span class="small muted">30 s</span></div><p class="muted">Squatting, then walking up the ramp with a 3.5 kg kettlebell.</p></figcaption>
+        </figure>
+        <figure class="tile" id="clip-outdoor_bicep" data-video="outdoor_bicep" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Outdoor terrain</span><div class="clip-meta"><h4 class="title-sm">Outdoor bicep curls</h4><span class="small muted">9 s</span></div><p class="muted">Repeated barbell curls on outdoor terrain.</p></figcaption>
+        </figure>
+        <figure class="tile" id="clip-kettlebell_carry" data-video="kettlebell_carry" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Flat ground</span><div class="clip-meta"><h4 class="title-sm">Kettlebell rows</h4><span class="small muted">10 s</span></div><p class="muted">Rowing a 3.5 kg kettlebell on flat ground.</p></figcaption>
+        </figure>
+        <figure class="tile" id="clip-kettlebell_squat" data-video="kettlebell_squat" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Flat ground</span><div class="clip-meta"><h4 class="title-sm">Indoor kettlebell squats</h4><span class="small muted">10 s</span></div><p class="muted">Squatting and rising under a 3.5 kg handheld load.</p></figcaption>
+        </figure>
+        <figure class="tile" id="clip-barbell_lift" data-video="barbell_lift" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Flat ground</span><div class="clip-meta"><h4 class="title-sm">Barbell lifting</h4><span class="small muted">10 s</span></div><p class="muted">Barbell rotation on flat ground.</p></figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="demo-group" id="force-exertion" aria-labelledby="force-exertion-title">
+      <h3 class="demo-group-heading" id="force-exertion-title">Force Exertion.</h3>
+      <div class="tiles">
+        <figure class="tile" id="clip-syringe_insertion" data-video="syringe_insertion" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Flat ground</span><div class="clip-meta"><h4 class="title-sm">Syringe insertion</h4><span class="small muted">9 s · 2× playback</span></div><p class="muted">Commanded hand force for insertion at a tabletop fixture.</p></figcaption>
+        </figure>
+        <figure class="tile" id="clip-resisted_squat" data-video="resisted_squat" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Flat ground</span><div class="clip-meta"><h4 class="title-sm">Force exertion while squatting</h4><span class="small muted">8 s</span></div><p class="muted">Squatting while exerting hand forces of up to 9 N.</p></figcaption>
+        </figure>
+        <figure class="tile" id="clip-force_gauge" data-video="force_gauge" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Flat ground</span><div class="clip-meta"><h4 class="title-sm">Measured hand force</h4><span class="small muted">5 s · 3× playback</span></div><p class="muted">Measured hand force during a 9 N command.</p></figcaption>
+        </figure>
+        <figure class="tile" id="clip-cart_push_slope" data-video="cart_push_slope" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Sloped terrain · Ramps</span><div class="clip-meta"><h4 class="title-sm">Cart push on slope</h4><span class="small muted">6 s</span></div><p class="muted">Pushing a cart across ramps with a flat-ground reference.</p></figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="demo-group" id="torque-exertion" aria-labelledby="torque-exertion-title">
+      <h3 class="demo-group-heading" id="torque-exertion-title">Torque Exertion.</h3>
+      <div class="tiles">
+        <figure class="tile" id="clip-torque_control" data-video="torque_control" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Flat ground</span><div class="clip-meta"><h4 class="title-sm">Winch and screw rotation</h4><span class="small muted">8 s</span></div><p class="muted">Hand-torque exertion to rotate a winch and a screw.</p></figcaption>
+        </figure>
+        <figure class="tile" id="clip-winch_rotation" data-video="winch_rotation" data-autoplay>
+          <div class="frame"><div class="label"><span class="play"></span><span class="caps">Loading video</span></div></div>
+          <figcaption><span class="clip-setting">Flat ground</span><div class="clip-meta"><h4 class="title-sm">Right-hand winch rotation</h4><span class="small muted">8 s</span></div><p class="muted">Applying right-hand torque to turn a forklift winch.</p></figcaption>
+        </figure>
+      </div>
+    </section>
   </section>
   <section id="comparisons" class="media-section">
     <div class="media-heading"><span class="eyebrow caps">Baselines</span><div><h2>Baseline <span class="accent">Comparisons.</span></h2><p class="muted">Left: SONIC · Right: Ours</p></div></div>

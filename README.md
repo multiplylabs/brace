@@ -61,8 +61,12 @@ assets stay on the `website` branch.
 
 ### Videos
 
-The page contains 20 distinct demonstrations, a reference-transformation animation, and a silent hero playlist. Each demonstration
+The page contains 19 distinct demonstrations, a reference-transformation animation, and a silent hero playlist. Each demonstration
 appears once in the galleries; only the teaser reuses clips.
+Real-robot demonstrations are grouped into Force Compensation, Force Exertion,
+and Torque Exertion. Small setting labels distinguish outdoor terrain, ramps,
+and flat ground. Cart pushing belongs to Force Exertion; the former tabletop
+motion clip is no longer shown.
 The teaser always starts with syringe insertion, followed by kettlebell squats and a ramp walk,
 then outdoor bicep curls. It repeats that sequence. The title and gray overlay stay in place.
 The outdoor demo uses the first 30 seconds of the submission video; the teaser uses a separate
@@ -80,19 +84,18 @@ distance between the operator and robot.
 
 | Clip | Section | Description |
 |---|---|---|
-| `cart_push_slope` | Hardware | Cart push on slope |
-| `syringe_insertion` | Hardware | Syringe insertion |
-| `barbell_lift` | Hardware | Barbell lifting |
-| `winch_rotation` | Hardware | Winch rotation |
-| `torque_control` | Hardware | Torque from two viewpoints |
-| `outdoor_squat_ramp` | Hardware | Kettlebell squats followed by a ramp walk (0–30 s) |
+| `outdoor_squat_ramp` | Force Compensation | Kettlebell squats followed by a ramp walk (0–30 s) |
+| `outdoor_bicep` | Force Compensation | Outdoor bicep curls |
+| `kettlebell_carry` | Force Compensation | Kettlebell rows on flat ground |
+| `kettlebell_squat` | Force Compensation | Indoor kettlebell squats on flat ground |
+| `barbell_lift` | Force Compensation | Barbell rotation on flat ground |
+| `syringe_insertion` | Force Exertion | Syringe insertion on flat ground |
+| `resisted_squat` | Force Exertion | Force exertion while squatting on flat ground |
+| `force_gauge` | Force Exertion | Measured hand force on flat ground |
+| `cart_push_slope` | Force Exertion | Cart push across ramps |
+| `torque_control` | Torque Exertion | Winch and screw rotation |
+| `winch_rotation` | Torque Exertion | Right-hand winch rotation |
 | `outdoor_squat_teaser` | Teaser only | Shorter squat-to-ramp sequence (4–20 s) |
-| `outdoor_bicep` | Hardware | Outdoor bicep curls |
-| `kettlebell_carry` | Hardware | Indoor kettlebell carrying |
-| `kettlebell_squat` | Hardware | Indoor kettlebell squats |
-| `resisted_squat` | Hardware | Force exertion while squatting |
-| `force_gauge` | Hardware | Measured hand force |
-| `terrain_manipulation` | Hardware | Terrain-aware tabletop motion |
 | `comparison_box` | Comparisons | Box-lifting comparison |
 | `comparison_slope` | Comparisons | Slope-traversal comparison |
 | `comparison_rows` | Comparisons | Resistance-band rows |

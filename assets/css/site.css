@@ -254,7 +254,11 @@ footer .legal{grid-column:1/-1;padding-top:80px;color:var(--slate-5)}
 .media-heading p{margin-top:10px}
 .media-heading .eyebrow{padding-top:14px}
 .media-section .tiles{padding-top:0}
-.clip-meta h3{font-weight:500}
+.demo-group+.demo-group{border-top:1px solid var(--line-soft)}
+.demo-group-heading{padding:24px var(--g) 18px;font:400 24px/30px var(--font);letter-spacing:-.5px}
+.media-heading+.demo-group .demo-group-heading{padding-top:0}
+.clip-setting{display:block;margin-bottom:7px;color:var(--ink-2);font:500 11px/14px var(--font);letter-spacing:.06em;text-transform:uppercase}
+.clip-meta .title-sm{font-weight:500}
 .tile figcaption p{font-size:13px;line-height:18px}
 /* The animation and the figure it explains sit side by side, so the playhead's stage and the
    highlighted region of the figure are in view together. */
@@ -296,4 +300,4 @@ footer .legal{grid-column:1/-1;padding-top:80px;color:var(--slate-5)}
 footer .compact-footer{display:flex;align-items:center;gap:24px;padding:28px var(--g)}
 footer .compact-footer p{flex:1;color:var(--slate-7)}
 @media(max-width:1000px){.media-heading{grid-template-columns:140px 1fr;gap:20px}}
-@media(max-width:640px){.hero{height:clamp(400px,72svh,640px)}.hero-title{padding:14px var(--g) 36px}.hero-subtitle{margin-top:10px;font-size:17px;line-height:1.25;letter-spacing:-.2px}.project-intro{padding:24px var(--g) 22px;gap:14px}.authors{font-size:20px;line-height:28px;column-gap:18px;letter-spacing:-.4px}.affiliations{font-size:15px;line-height:22px;column-gap:16px}.media-heading{grid-template-columns:1fr;gap:18px;padding:28px var(--g) 22px}.media-heading h2{font-size:28px;line-height:34px}.project-actions{flex-wrap:wrap;justify-content:center}.clip-meta{flex-wrap:nowrap}.clip-meta h3{font-size:16px;line-height:21px}.research-details>summary{font-size:16px}.compact-footer{flex-wrap:wrap}}
+@media(max-width:640px){.hero{height:clamp(400px,72svh,640px)}.hero-title{padding:14px var(--g) 36px}.hero-subtitle{margin-top:10px;font-size:17px;line-height:1.25;letter-spacing:-.2px}.project-intro{padding:24px var(--g) 22px;gap:14px}.authors{font-size:20px;line-height:28px;column-gap:18px;letter-spacing:-.4px}.affiliations{font-size:15px;line-height:22px;column-gap:16px}.media-heading{grid-template-columns:1fr;gap:18px;padding:28px var(--g) 22px}.media-heading h2{font-size:28px;line-height:34px}.project-actions{flex-wrap:wrap;justify-content:center}.clip-meta{flex-wrap:nowrap}.clip-meta .title-sm{font-size:16px;line-height:21px}.research-details>summary{font-size:16px}.compact-footer{flex-wrap:wrap}}
