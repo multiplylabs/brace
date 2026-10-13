@@ -2,7 +2,12 @@
 
 Project page for **BRACE: Adapting Whole-Body References for Force and Terrain Aware Humanoid Motion Tracking**, from Multiply Labs, Brown University and the University of New Mexico.
 
-Live at <https://multiplylabs.github.io/brace/>. Every push to `main` deploys through GitHub Actions.
+Live at <https://multiplylabs.github.io/brace/>. Every push to `website` deploys through GitHub Actions.
+
+This is the `website` branch of [multiplylabs/brace](https://github.com/multiplylabs/brace).
+The default `main` branch is reserved for the code release. Edit website files on
+`website`; code changes on `main` do not deploy the site. For a manual deployment,
+run the **Deploy site** workflow with `website` selected as the branch.
 
 This is the **named** project page. An anonymous copy exists separately for double-blind review; nothing in this repository links to it, and edits are never shared between the two repositories.
 
@@ -33,7 +38,7 @@ Use `scripts/serve.py` rather than `python3 -m http.server`. The built-in server
 
 ## Adding content
 
-Every placeholder switches on as soon as its file is committed. No HTML changes are needed except for the code link.
+Media placeholders switch on as soon as their files are committed to `website`.
 
 ### Paper and appendix
 
@@ -49,9 +54,10 @@ and small blue dot give the button a subtle highlight using the existing colour 
 
 ### Code
 
-**Code · Coming soon** appears immediately after **Live demo** in the action row
-and navigation. These are disabled placeholders with no destination. When the
-code repo is public, replace them with links and remove the coming-soon badges.
+**Code · Coming soon** links to <https://github.com/multiplylabs/brace> immediately
+after **Live demo** in the action row and navigation. The default `main` branch
+contains the code release information; keep the badges until the implementation
+is released. The page and its assets stay on the `website` branch.
 
 ### Videos
 

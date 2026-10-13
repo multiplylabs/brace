@@ -2,7 +2,7 @@ name: Deploy site
 
 on:
   push:
-    branches: [main]
+    branches: [website]
   workflow_dispatch:
 
 # Granted per job below.
@@ -16,8 +16,8 @@ concurrency:
 # Actions are pinned to commit SHAs. The comment after each SHA says which version it is.
 jobs:
   build:
-    # Only ever publish main, including for manual runs.
-    if: github.ref == 'refs/heads/main'
+    # Only ever publish website, including for manual runs.
+    if: github.ref == 'refs/heads/website'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -41,7 +41,7 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/website'
     runs-on: ubuntu-latest
     permissions:
       pages: write
