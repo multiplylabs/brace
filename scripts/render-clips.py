@@ -101,6 +101,7 @@ def main():
     parser.add_argument('--submission', type=Path)
     parser.add_argument('--traction', type=Path)
     parser.add_argument('--outdoor', type=Path, help='Outdoor footage converted to SDR at a constant frame rate')
+    parser.add_argument('--barbell-terrain', type=Path, help='Trimmed barbell-carry footage converted to SDR at 30 fps')
     parser.add_argument('--only', nargs='*')
     parser.add_argument('--workers', type=int, default=2)
     args = parser.parse_args()

@@ -61,7 +61,7 @@ assets stay on the `website` branch.
 
 ### Videos
 
-The page contains 19 distinct demonstrations, a reference-transformation animation, and a silent hero playlist. Each demonstration
+The page contains 20 distinct demonstrations, a reference-transformation animation, and a silent hero playlist. Each demonstration
 appears once in the galleries; only the teaser reuses clips.
 Real-robot demonstrations are grouped into Force Compensation, Force Exertion,
 and Torque Exertion. Small setting labels distinguish outdoor terrain, ramps,
@@ -86,6 +86,7 @@ distance between the operator and robot.
 |---|---|---|
 | `outdoor_squat_ramp` | Force Compensation | Kettlebell squats followed by a ramp walk (0–30 s) |
 | `outdoor_bicep` | Force Compensation | Outdoor bicep curls |
+| `barbell_terrain` | Force Compensation | Barbell carrying up an outdoor ramp |
 | `kettlebell_carry` | Force Compensation | Kettlebell rows on flat ground |
 | `kettlebell_squat` | Force Compensation | Indoor kettlebell squats on flat ground |
 | `barbell_lift` | Force Compensation | Barbell rotation on flat ground |
@@ -119,16 +120,20 @@ interval, with tracked blur on the background sign and street number.
 To reproduce the videos, install `opencv-python-headless` and `numpy` in a local environment,
 and ensure `ffmpeg` is on PATH. First convert HDR outdoor footage to SDR at 30 fps
 (the following command requires FFmpeg with `libplacebo` and Vulkan support), then pass
-the three source files explicitly:
+the prepared source files explicitly:
 
 ```sh
 ffmpeg -init_hw_device vulkan=vk -filter_hw_device vk -i path/to/outdoor-source.mov \
   -map 0:v:0 -vf 'libplacebo=colorspace=bt709:color_primaries=bt709:color_trc=bt709:format=yuv420p,format=yuv420p,fps=30' \
   -an -map_metadata -1 -map_chapters -1 -c:v libx264 -crf 17 path/to/outdoor-sdr.mp4
-python scripts/render-clips.py --submission path/to/submission-video.mp4 --traction path/to/traction-video.mp4 --outdoor path/to/outdoor-sdr.mp4
+python scripts/render-clips.py --submission path/to/submission-video.mp4 --traction path/to/traction-video.mp4 --outdoor path/to/outdoor-sdr.mp4 --barbell-terrain path/to/barbell-terrain-sdr.mp4
 ```
 
 Use `--only clip_name` to render a single clip; only that clip's source argument is required.
+The barbell-carry source, `IMG_0640_43s-52s.MOV`, is already trimmed to nine seconds.
+Convert it from HDR to SDR with the same FFmpeg command above, then render it with
+`python scripts/render-clips.py --barbell-terrain path/to/barbell-terrain-sdr.mp4 --only barbell_terrain`.
+Its crop retains the robot and ramp while reducing empty sky and background.
 After any edit, visually check the entire affected
 clip, including its first and last frames. The hero automatically uses the updated clip. Posters use the same treatment as their clips. Keep individual
 demonstrations below 20 MB.

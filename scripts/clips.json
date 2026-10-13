@@ -589,6 +589,23 @@
       ]
     },
     {
+      "id": "barbell_terrain",
+      "source": "barbell_terrain",
+      "start": 0,
+      "end": 8.966666666666667,
+      "crop": [120, 90, 704, 396],
+      "crf": 19,
+      "preset": "slow",
+      "group": "hardware",
+      "terrain": "Outdoor terrain · Ramp",
+      "capability": "Force compensation",
+      "title": "Barbell carrying over terrain",
+      "caption": "Carrying a barbell while walking up an outdoor ramp.",
+      "speed": "1× source speed",
+      "tag": "Force compensation",
+      "masks": []
+    },
+    {
       "id": "syringe_insertion",
       "source": "traction",
       "start": 29.5,
