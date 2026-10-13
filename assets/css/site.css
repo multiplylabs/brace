@@ -46,6 +46,7 @@ nav.top .brand{display:flex;align-items:center;gap:14px}
 nav.top .wordmark{font:500 18px/24px var(--font);letter-spacing:.08em;text-transform:uppercase}
 nav.top .links{display:flex;gap:28px;flex-wrap:wrap;justify-content:flex-end}
 nav.top .links a:hover{color:var(--accent-ink)}
+nav.top .nav-demo{color:var(--accent-ink)}
 .tag{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border:1px solid var(--line-input);border-radius:var(--r);color:var(--ink-2)}
 .tag::before{content:"";width:6px;height:6px;background:var(--accent);border-radius:1px}
 
@@ -74,6 +75,9 @@ nav.top .links a:hover{color:var(--accent-ink)}
 .btn-primary:hover{background:var(--blue-3);border-color:var(--blue-3)}
 .btn-secondary{background:transparent;color:var(--accent-ink)}
 .btn-secondary:hover{background:var(--blue-9)}
+.btn-demo{background:var(--blue-9);color:var(--blue-3)}
+.btn-demo::before{content:"";width:6px;height:6px;flex-shrink:0;border-radius:50%;background:var(--accent)}
+.btn-demo:hover{border-color:var(--blue-3)}
 .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .btn-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;max-width:360px}
 .btn-grid .btn{justify-content:center}

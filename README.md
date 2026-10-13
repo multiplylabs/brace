@@ -43,9 +43,9 @@ and add its link next to **Read paper**.
 
 ### Live demo
 
-The **Live demo** button is a `data-soon` placeholder for now. Its href already points at the
-browser demo, <https://multiplylabs.github.io/robogym-online/>; remove the `data-soon` attribute
-(and add `target="_blank" rel="noopener"`) to switch it on, and add a matching nav link.
+The **Live demo** button and matching navigation link open the browser demo,
+<https://multiplylabs.github.io/robogym-online/>, in a new tab. A pale blue fill
+and small blue dot give the button a subtle highlight using the existing colour tokens.
 
 ### Code
 
