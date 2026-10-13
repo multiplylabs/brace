@@ -251,7 +251,6 @@ footer .legal{grid-column:1/-1;padding-top:80px;color:var(--slate-5)}
 .demo-action{display:flex;flex-direction:column;align-items:center;gap:7px}
 .media-section{border-top:1px solid var(--line-soft)}
 .media-heading{display:grid;grid-template-columns:180px 1fr;gap:40px;padding:36px var(--g) 28px;align-items:start}
-.media-heading>div:only-child{grid-column:1/-1}
 .media-heading h2{font-size:36px;line-height:42px}
 .media-heading p{margin-top:10px}
 .media-heading .eyebrow{padding-top:14px}
